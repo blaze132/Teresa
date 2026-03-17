@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bacolod Eternal Rest Columbarium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        mono: ['DM Mono', 'monospace'],
+                    },
+                    colors: {
+                        gold: { 50: '#fbf9f2', 100: '#f5f0db', 200: '#eadcae', 300: '#ddc27b', 400: '#d1a450', 500: '#c58b34', 600: '#b06f2a', 700: '#935326', 800: '#794324', 900: '#623820' },
+                        cream: '#FDFBF7',
+                        charcoal: '#1E1E1E',
+                        slate2: '#2C2C2C',
+                        mist: '#F5F3EE',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --gold: #c58b34;
+            --charcoal: #1E1E1E;
+            --cream: #FDFBF7;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+        }
+
+        .glass-nav {
+            background: rgba(253, 251, 247, 0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(197, 139, 52, 0.15);
+        }
+
+        .hero-bg {
+            background: linear-gradient(160deg, rgba(20, 20, 20, 0.65) 0%, rgba(20, 20, 20, 0.82) 100%),
+                url('https://images.unsplash.com/photo-1548625361-ec858abceae3?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat fixed;
+        }
+
+        .hero-grain::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .parallax-divider {
+            background: linear-gradient(to bottom, rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.8)),
+                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
+            min-height: 340px;
+        }
+
+        .niche-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        .niche-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 28px 56px -12px rgba(197, 139, 52, 0.18);
+            border-color: #d1a450;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.07);
+        }
+
+        .tab-btn.active {
+            background: var(--charcoal);
+            color: white;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 5px;
+            border-radius: 9999px;
+            background: #e5e5e5;
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(197, 139, 52, 0.4);
+        }
+
+        .modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            transform: scale(.95) translateY(20px);
+            transition: all .3s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #c58b34, #e8b556);
+        }
+
+        #chatWindow {
+            transform-origin: bottom right;
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #c58b34 0%, #e8c07d 50%, #b06f2a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .announcement {
+            background: linear-gradient(90deg, #1E1E1E 0%, #2C2C2C 100%);
+        }
+
+        .new-badge {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            font-size: 9px;
+            letter-spacing: .08em;
+        }
+
+        .testimonial-track {
+            scroll-snap-type: x mandatory;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .testimonial-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-item {
+            scroll-snap-align: start;
+        }
+
+        /* =============================================
+           MEGA DROPDOWN — KEY FIX
+           No overflow:hidden on the wrapper.
+           Flyouts use fixed positioning via JS.
+        ============================================= */
+        .nav-mega-wrapper {
+            position: relative;
+        }
+
+        /* Level-1 dropdown */
+        #productsDropdown {
+            position: absolute;
+            left: 0;
+            top: calc(100% + 4px);
+            width: 240px;
+            background: #fff;
+            border: 1px solid #f0ece4;
+            border-radius: 14px;
+            box-shadow: 0 20px 40px -8px rgba(30, 30, 30, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: opacity .25s ease, transform .25s ease, visibility .25s;
+            z-index: 200;
+            /* NO overflow:hidden here! */
+        }
+
+        .nav-mega-wrapper:hover #productsDropdown,
+        #productsDropdown:hover {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Each parent row */
+        .dd-parent {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .dd-parent-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 11px 16px;
+            font-size: 13px;
+            color: #4b5563;
+            transition: background .15s, color .15s;
+            border: none;
+            background: transparent;
+            text-align: left;
+            gap: 8px;
+        }
+
+        .dd-parent:not(:last-child) .dd-parent-btn {
+            border-bottom: 1px solid #f9f5ef;
+        }
+
+        .dd-parent-btn:hover,
+        .dd-parent:hover .dd-parent-btn {
+            background: #fbf9f2;
+            color: #b06f2a;
+        }
+
+        .dd-parent-btn .dd-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .dd-parent-btn .chevron {
+            font-size: 10px;
+            color: #9ca3af;
+            transition: color .15s, transform .15s;
+            flex-shrink: 0;
+        }
+
+        .dd-parent:hover .chevron {
+            color: var(--gold);
+            transform: translateX(2px);
+        }
+
+        /* Level-2 flyout */
+        .dd-flyout {
+            position: absolute;
+            left: calc(100% + 6px);
+            top: -6px;
+            width: 220px;
+            background: #fff;
+            border: 1px solid #f0ece4;
+            border-radius: 14px;
+            box-shadow: 0 20px 40px -8px rgba(30, 30, 30, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(6px);
+            transition: opacity .2s ease, transform .2s ease, visibility .2s;
+            z-index: 300;
+            overflow: hidden;
+        }
+
+        .dd-parent:hover .dd-flyout {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .dd-flyout-header {
+            padding: 8px 14px;
+            background: #fbf9f2;
+            border-bottom: 1px solid #f5f0db;
+            font-size: 10px;
+            font-weight: 700;
+            color: #b06f2a;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        .dd-flyout a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: #4b5563;
+            transition: background .15s, color .15s;
+            border-bottom: 1px solid #f9f5ef;
+            text-decoration: none;
+        }
+
+        .dd-flyout a:last-child {
+            border-bottom: none;
+        }
+
+        .dd-flyout a:hover {
+            background: #fbf9f2;
+            color: #b06f2a;
+        }
+
+        .dd-flyout a i {
+            font-size: 11px;
+            color: #d1a450;
+            width: 14px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        /* Rose Lawn has many items — allow scroll */
+        .dd-flyout.scrollable {
+            max-height: 320px;
+            overflow-y: auto;
+        }
+
+        .dd-flyout.scrollable::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .dd-flyout.scrollable::-webkit-scrollbar-track {
+            background: #f9f5ef;
+        }
+
+        .dd-flyout.scrollable::-webkit-scrollbar-thumb {
+            background: #ddc27b;
+            border-radius: 9999px;
+        }
+
+        /* Mobile accordion */
+        .mobile-acc-body {
+            display: none;
+        }
+
+        .mobile-acc-body.open {
+            display: block;
+        }
+
+        .mobile-sub-body {
+            display: none;
+        }
+
+        .mobile-sub-body.open {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold-200">
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announcement text-center py-2.5 px-4 text-xs font-medium tracking-widest text-gold-300 uppercase">
+        <i class="fa-solid fa-dove mr-2 text-gold-500"></i> Now accepting reservations for 2026 — Limited niches
+        available &nbsp;·&nbsp; Call (034) 123-4567
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 w-full glass-nav z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <i class="fa-solid fa-dove text-3xl text-gold-500 group-hover:text-gold-600 transition"></i>
+                <div class="leading-tight">
+                    <span class="block text-xl font-serif font-bold tracking-tight text-charcoal">Teresa
+                        Development</span>
+                    <span
+                        class="block text-[10px] font-medium text-gold-600 tracking-[0.2em] uppercase">Corporation</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="#" class="text-charcoal hover:text-gold-600 transition">HOME</a>
+
+                <!-- PRODUCTS & SERVICES MEGA DROPDOWN -->
+                <div class="nav-mega-wrapper">
+                    <button class="text-charcoal hover:text-gold-600 transition flex items-center gap-1.5 py-4">
+                        PRODUCTS & SERVICES <i class="fa-solid fa-caret-down text-xs ml-1"></i>
+                    </button>
+
+                    <div id="productsDropdown">
+
+                        <!-- ① Acropolis Garden -->
+                        <div class="dd-parent">
+                            <button class="dd-parent-btn">
+                                <span class="dd-label">
+                                    <i class="fa-solid fa-tree text-gold-400"></i>
+                                    Acropolis Garden
+                                </span>
+                                <i class="fa-solid fa-chevron-right chevron"></i>
+                            </button>
+                            <div class="dd-flyout">
+                                <div class="dd-flyout-header">Acropolis Garden</div>
+                                <a href="#"><i class="fa-solid fa-file-contract"></i> Pre-Need Plan</a>
+                                <a href="#"><i class="fa-solid fa-fire"></i> Cremation Plan</a>
+                            </div>
+                        </div>
+
+                        <!-- ② Christ The Redeemer -->
+                        <div class="dd-parent">
+                            <button class="dd-parent-btn">
+                                <span class="dd-label">
+                                    <i class="fa-solid fa-church text-gold-400"></i>
+                                    Christ The Redeemer
+                                </span>
+                                <i class="fa-solid fa-chevron-right chevron"></i>
+                            </button>
+                            <div class="dd-flyout">
+                                <div class="dd-flyout-header">Christ The Redeemer</div>
+                                <a href="#"><i class="fa-solid fa-vault"></i> Columbarium Basic Vault</a>
+                                <a href="#"><i class="fa-solid fa-star"></i> Columbarium Premium Vault</a>
+                                <a href="#"><i class="fa-solid fa-house-heart"></i> Family Suite</a>
+                            </div>
+                        </div>
+
+                        <!-- ③ Rose Lawn Memorial Park -->
+                        <div class="dd-parent">
+                            <button class="dd-parent-btn">
+                                <span class="dd-label">
+                                    <i class="fa-solid fa-seedling text-gold-400"></i>
+                                    Rose Lawn Memorial Park
+                                </span>
+                                <i class="fa-solid fa-chevron-right chevron"></i>
+                            </button>
+                            <div class="dd-flyout scrollable">
+                                <div class="dd-flyout-header">Rose Lawn Memorial Park</div>
+                                <a href="#"><i class="fa-solid fa-square"></i> Lawn Lot</a>
+                                <a href="#"><i class="fa-solid fa-border-all"></i> Court Lot</a>
+                                <a href="#"><i class="fa-solid fa-leaf"></i> Garden Lot</a>
+                                <a href="#"><i class="fa-solid fa-layer-group"></i> Terrace Lot</a>
+                                <a href="#"><i class="fa-solid fa-people-roof"></i> Family Lot</a>
+                                <a href="#"><i class="fa-solid fa-landmark"></i> Chateau Lot</a>
+                                <a href="#"><i class="fa-solid fa-building-columns"></i> Mansion Lot</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- END DROPDOWN -->
+
+                <a href="#about" class="text-charcoal hover:text-gold-600 transition">ABOUT</a>
+                <a href="#contact" class="text-charcoal hover:text-gold-600 transition">CONTACT</a>
+                <a href="#plans"
+                    class="bg-gold-500 hover:bg-gold-600 text-white px-7 py-2.5 rounded-full transition transform hover:-translate-y-0.5 shadow-lg shadow-gold-500/30 flex items-center gap-2 text-sm">
+                    <i class="fa-solid fa-credit-card"></i> PLAN & PAY
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <button class="md:hidden text-2xl text-charcoal" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- ===================== MOBILE MENU ===================== -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl z-40">
+            <div class="px-6 py-4 space-y-1 text-sm font-medium">
+                <a href="#" class="block py-3 text-charcoal border-b border-gray-50">HOME</a>
+
+                <!-- Products accordion -->
+                <div>
+                    <button onclick="toggleMobileAcc('mAcc_products')"
+                        class="w-full flex items-center justify-between py-3 text-charcoal border-b border-gray-50">
+                        PRODUCTS & SERVICES
+                        <i class="fa-solid fa-caret-down text-xs text-gold-500 transition-transform"
+                            id="mAcc_products_icon"></i>
+                    </button>
+                    <div id="mAcc_products" class="mobile-acc-body pl-3 pb-1">
+
+                        <!-- Acropolis -->
+                        <div>
+                            <button onclick="toggleMobileSub('mSub_acropolis')"
+                                class="w-full flex items-center justify-between py-2.5 text-gray-600 border-b border-gray-50 text-[13px]">
+                                <span class="flex items-center gap-2"><i
+                                        class="fa-solid fa-tree text-gold-400 text-[11px]"></i> Acropolis Garden</span>
+                                <i class="fa-solid fa-chevron-down text-[10px] text-gray-400"
+                                    id="mSub_acropolis_icon"></i>
+                            </button>
+                            <div id="mSub_acropolis" class="mobile-sub-body pl-5 py-1 space-y-1">
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-file-contract text-gold-400 text-[11px]"></i> Pre-Need
+                                    Plan</a>
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-fire text-gold-400 text-[11px]"></i> Cremation Plan</a>
+                            </div>
+                        </div>
+
+                        <!-- Christ The Redeemer -->
+                        <div>
+                            <button onclick="toggleMobileSub('mSub_christ')"
+                                class="w-full flex items-center justify-between py-2.5 text-gray-600 border-b border-gray-50 text-[13px]">
+                                <span class="flex items-center gap-2"><i
+                                        class="fa-solid fa-church text-gold-400 text-[11px]"></i> Christ The
+                                    Redeemer</span>
+                                <i class="fa-solid fa-chevron-down text-[10px] text-gray-400" id="mSub_christ_icon"></i>
+                            </button>
+                            <div id="mSub_christ" class="mobile-sub-body pl-5 py-1 space-y-1">
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-vault text-gold-400 text-[11px]"></i> Columbarium Basic
+                                    Vault</a>
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-star text-gold-400 text-[11px]"></i> Columbarium Premium
+                                    Vault</a>
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-house-heart text-gold-400 text-[11px]"></i> Family Suite</a>
+                            </div>
+                        </div>
+
+                        <!-- Rose Lawn -->
+                        <div>
+                            <button onclick="toggleMobileSub('mSub_rose')"
+                                class="w-full flex items-center justify-between py-2.5 text-gray-600 border-b border-gray-50 text-[13px]">
+                                <span class="flex items-center gap-2"><i
+                                        class="fa-solid fa-seedling text-gold-400 text-[11px]"></i> Rose Lawn Memorial
+                                    Park</span>
+                                <i class="fa-solid fa-chevron-down text-[10px] text-gray-400" id="mSub_rose_icon"></i>
+                            </button>
+                            <div id="mSub_rose" class="mobile-sub-body pl-5 py-1 space-y-1">
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-square text-gold-400 text-[11px]"></i> Lawn Lot</a>
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-border-all text-gold-400 text-[11px]"></i> Court Lot</a>
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-leaf text-gold-400 text-[11px]"></i> Garden Lot</a>
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-layer-group text-gold-400 text-[11px]"></i> Terrace Lot</a>
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-people-roof text-gold-400 text-[11px]"></i> Family Lot</a>
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-landmark text-gold-400 text-[11px]"></i> Chateau Lot</a>
+                                <a href="#"
+                                    class="flex items-center gap-2 py-2 text-[13px] text-gray-500 hover:text-gold-600"><i
+                                        class="fa-solid fa-building-columns text-gold-400 text-[11px]"></i> Mansion
+                                    Lot</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <a href="#about" class="block py-3 text-charcoal border-b border-gray-50">ABOUT</a>
+                <a href="#contact" class="block py-3 text-charcoal">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-bg hero-grain relative min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-6 text-center z-10 w-full py-32">
+            <div
+                class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-8">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                <span class="text-gold-300 tracking-[0.25em] text-xs font-medium uppercase">Bacolod Eternal Rest
+                    Columbarium</span>
+            </div>
+            <h1 class="text-5xl md:text-8xl font-serif font-bold mb-6 text-white leading-[1.05] tracking-tight">
+                A Legacy of <br><em class="gold-gradient not-italic">Peace</em> & Dignity
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-300 mb-12 font-light leading-relaxed">
+                Premium columbarium niches providing a serene, secure, and beautifully maintained sanctuary — where
+                memories live on in grace and beauty.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="document.getElementById('preview').scrollIntoView({behavior:'smooth'})"
+                    class="bg-white text-charcoal hover:bg-gold-50 px-8 py-4 rounded-full inline-flex items-center gap-3 transition shadow-2xl font-medium tracking-wide">
+                    <i class="fa-solid fa-play text-gold-500 text-sm"></i> VIRTUAL TOUR
+                </button>
+                <button onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})"
+                    class="bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full inline-flex items-center gap-3 transition shadow-2xl shadow-gold-500/30 font-medium tracking-wide">
+                    VIEW PLANS <i class="fa-solid fa-arrow-right text-sm"></i>
+                </button>
+            </div>
+        </div>
+        <div
+            class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-60">
+            <span class="text-white text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+            <i class="fa-solid fa-chevron-down text-white text-sm"></i>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="bg-charcoal py-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="py-4 border-r border-white/10 last:border-0">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-gold-400 mb-1">2,400+</div>
+                <div class="text-gray-400 text-xs tracking-widest uppercase font-medium">Niches Available</div>
+            </div>
+            <div class="py-4 border-r border-white/10 last:border-0">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-gold-400 mb-1">30+</div>
+                <div class="text-gray-400 text-xs tracking-widest uppercase font-medium">Years of Service</div>
+            </div>
+            <div class="py-4 border-r border-white/10 last:border-0">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-gold-400 mb-1">100%</div>
+                <div class="text-gray-400 text-xs tracking-widest uppercase font-medium">Perpetual Care Fund</div>
+            </div>
+            <div class="py-4">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-gold-400 mb-1">24/7</div>
+                <div class="text-gray-400 text-xs tracking-widest uppercase font-medium">Security & Support</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIRTUAL TOUR / PREVIEW -->
+    <section id="preview" class="py-24 bg-mist">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14 reveal">
+                <span
+                    class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase bg-gold-100 px-4 py-1.5 rounded-full">Virtual
+                    Preview</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mt-5 mb-4 text-charcoal">Walk Through Our Sanctuary
+                </h2>
+                <p class="text-gray-500 max-w-xl mx-auto font-light text-lg">Experience the peaceful ambiance and
+                    architectural beauty of Bacolod Eternal Rest before your visit.</p>
+            </div>
+
+            <div class="flex justify-center mb-8 gap-2 flex-wrap">
+                <button
+                    class="tab-btn active px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-200 transition"
+                    onclick="switchTab('gallery', event)">Photo Gallery</button>
+                <button
+                    class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-mist transition"
+                    onclick="switchTab('exterior', event)">Exterior</button>
+                <button
+                    class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-mist transition"
+                    onclick="switchTab('interior', event)">Interior</button>
+                <button
+                    class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-200 bg-mist transition"
+                    onclick="switchTab('garden', event)">Gardens</button>
+            </div>
+
+            <div id="tab-gallery" class="tab-pane active reveal">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="gallery-item rounded-2xl overflow-hidden row-span-2 h-64 md:h-auto">
+                        <img src="https://images.unsplash.com/photo-1548625361-ec858abceae3?q=80&w=800&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Columbarium main hall">
+                    </div>
+                    <div class="gallery-item rounded-2xl overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Architecture">
+                    </div>
+                    <div class="gallery-item rounded-2xl overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1585543805890-6051f7829f98?q=80&w=800&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Garden">
+                    </div>
+                    <div class="gallery-item rounded-2xl overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=800&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Peaceful landscape">
+                    </div>
+                    <div class="gallery-item rounded-2xl overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Memorial area">
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-exterior" class="tab-pane reveal">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="gallery-item rounded-2xl overflow-hidden h-72">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Exterior front">
+                    </div>
+                    <div class="gallery-item rounded-2xl overflow-hidden h-72">
+                        <img src="https://images.unsplash.com/photo-1548625361-ec858abceae3?q=80&w=1000&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Exterior side">
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-interior" class="tab-pane reveal">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="gallery-item rounded-2xl overflow-hidden h-64 md:col-span-2">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Interior hall">
+                    </div>
+                    <div class="gallery-item rounded-2xl overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1585543805890-6051f7829f98?q=80&w=600&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Niche wall">
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-garden" class="tab-pane reveal">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="gallery-item rounded-2xl overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=600&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Garden 1">
+                    </div>
+                    <div class="gallery-item rounded-2xl overflow-hidden h-52 md:col-span-2">
+                        <img src="https://images.unsplash.com/photo-1585543805890-6051f7829f98?q=80&w=1000&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Garden landscape">
+                    </div>
+                    <div class="gallery-item rounded-2xl overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1548625361-ec858abceae3?q=80&w=600&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Garden 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NICHE TYPES VISUAL PREVIEW -->
+    <section id="niches" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase">Our Offerings</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mt-4 mb-4 text-charcoal">Niche Types & Features
+                </h2>
+                <div class="w-20 h-0.5 bg-gold-400 mx-auto mt-4 mb-6"></div>
+                <p class="text-gray-500 max-w-lg mx-auto font-light">Thoughtfully designed spaces that honor your loved
+                    ones with dignity and lasting beauty.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 reveal">
+                <div class="niche-card border border-gray-100 rounded-2xl overflow-hidden shadow-sm bg-white">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1548625361-ec858abceae3?q=80&w=600&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Single niche">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent"></div>
+                        <div class="absolute top-4 left-4"><span
+                                class="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-white/30 uppercase">Single
+                                Niche</span></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="text-2xl font-serif font-bold text-white">₱48,000</div>
+                            <div class="text-gold-300 text-xs mt-0.5">One-time investment</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-gold-100 flex items-center justify-center"><i
+                                    class="fa-solid fa-urn text-gold-600 text-[10px]"></i></div>
+                            <span class="text-sm font-semibold text-charcoal">1 Urn Capacity</span>
+                        </div>
+                        <ul class="space-y-2.5 mb-6 text-sm text-gray-600">
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-500 text-xs"></i> Premium Italian marble
+                                plaque</li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-500 text-xs"></i> Ambient LED backlighting
+                            </li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-500 text-xs"></i> Name & date engraving
+                            </li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-500 text-xs"></i> Annual complimentary
+                                cleaning</li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-500 text-xs"></i> Perpetual maintenance
+                                guarantee</li>
+                        </ul>
+                        <button onclick="selectPlan('Single Niche', 48000)"
+                            class="w-full py-3.5 rounded-xl font-semibold text-sm border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white transition">Select
+                            Plan</button>
+                    </div>
+                </div>
+
+                <div
+                    class="niche-card border-2 border-gold-400 rounded-2xl overflow-hidden shadow-xl bg-charcoal relative transform md:-translate-y-4">
+                    <div class="absolute top-0 left-0 right-0 flex justify-center z-10">
+                        <span
+                            class="badge text-white text-[10px] font-bold px-5 py-1.5 rounded-b-xl tracking-wider uppercase shadow-lg">✦
+                            Most Chosen</span>
+                    </div>
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop"
+                            class="w-full h-full object-cover opacity-70" alt="Double niche">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="text-2xl font-serif font-bold text-white">₱78,000</div>
+                            <div class="text-gold-300 text-xs mt-0.5">One-time investment</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-gold-500/20 flex items-center justify-center"><i
+                                    class="fa-solid fa-users text-gold-400 text-[10px]"></i></div>
+                            <span class="text-sm font-semibold text-gold-300">2 Urns Capacity</span>
+                        </div>
+                        <ul class="space-y-2.5 mb-6 text-sm text-gray-400">
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-400 text-xs"></i> All Single Niche
+                                features included</li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-400 text-xs"></i> Premium rose granite
+                                upgrade</li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-400 text-xs"></i> Embedded custom photo
+                                frame</li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-400 text-xs"></i> Priority scheduling for
+                                visits</li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-400 text-xs"></i> Dual name & date
+                                engraving</li>
+                        </ul>
+                        <button onclick="selectPlan('Double Niche', 78000)"
+                            class="w-full py-3.5 rounded-xl font-semibold text-sm bg-gold-500 text-white hover:bg-gold-600 transition shadow-lg shadow-gold-500/30">Select
+                            Plan</button>
+                    </div>
+                </div>
+
+                <div class="niche-card border border-gray-100 rounded-2xl overflow-hidden shadow-sm bg-white">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=600&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Family suite">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent"></div>
+                        <div class="absolute top-4 left-4"><span
+                                class="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-white/30 uppercase">Family
+                                Suite</span></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="text-2xl font-serif font-bold text-white">₱145,000</div>
+                            <div class="text-gold-300 text-xs mt-0.5">One-time investment</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-gold-100 flex items-center justify-center"><i
+                                    class="fa-solid fa-house-heart text-gold-600 text-[10px]"></i></div>
+                            <span class="text-sm font-semibold text-charcoal">4 Urns Capacity</span>
+                        </div>
+                        <ul class="space-y-2.5 mb-6 text-sm text-gray-600">
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-500 text-xs"></i> All Double Niche
+                                features included</li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-500 text-xs"></i> Exclusive private
+                                viewing vestibule</li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-500 text-xs"></i> Quarterly floral
+                                arrangements</li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-500 text-xs"></i> Dedicated family
+                                nameplate</li>
+                            <li class="flex items-center gap-2.5"><i
+                                    class="fa-solid fa-circle-check text-gold-500 text-xs"></i> VIP bereavement
+                                counseling</li>
+                        </ul>
+                        <button onclick="selectPlan('Family Suite', 145000)"
+                            class="w-full py-3.5 rounded-xl font-semibold text-sm border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white transition">Select
+                            Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARALLAX QUOTE -->
+    <div class="parallax-divider flex items-center justify-center text-center px-6">
+        <div class="max-w-3xl">
+            <i class="fa-solid fa-quote-left text-gold-400 text-4xl mb-6 opacity-70"></i>
+            <p class="text-3xl md:text-4xl font-serif italic text-white leading-relaxed font-light">"A place where love
+                is forever kept, and peace is eternally granted."</p>
+            <div class="w-16 h-0.5 bg-gold-400 mx-auto mt-8 mb-4"></div>
+            <span class="text-gold-300 text-sm tracking-widest uppercase font-medium">Bacolod Eternal Rest — Est.
+                1993</span>
+        </div>
+    </div>
+
+    <!-- COST ESTIMATOR -->
+    <section id="estimator" class="py-24 bg-mist">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-14 reveal">
+                <span
+                    class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase bg-gold-100 px-4 py-1.5 rounded-full">Plan
+                    Your Budget</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mt-5 mb-4 text-charcoal">Cost Estimator</h2>
+                <p class="text-gray-500 max-w-lg mx-auto font-light">Customize your payment plan and see estimated
+                    monthly installments in real time.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 reveal">
+                <div class="grid md:grid-cols-2">
+                    <div class="p-8 md:p-10 border-r border-gray-100">
+                        <div class="mb-8">
+                            <label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-4">1.
+                                Choose Niche Type</label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <button onclick="setNiche('single', 48000, this)"
+                                    class="est-niche-btn border-2 border-charcoal bg-charcoal text-white rounded-xl py-3 text-xs font-bold tracking-wide transition text-center">Single<br><span
+                                        class="text-gold-400 font-mono">₱48K</span></button>
+                                <button onclick="setNiche('double', 78000, this)"
+                                    class="est-niche-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold tracking-wide transition text-center text-charcoal hover:border-charcoal">Double<br><span
+                                        class="text-gold-600 font-mono">₱78K</span></button>
+                                <button onclick="setNiche('family', 145000, this)"
+                                    class="est-niche-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold tracking-wide transition text-center text-charcoal hover:border-charcoal">Family<br><span
+                                        class="text-gold-600 font-mono">₱145K</span></button>
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-4">2.
+                                Payment Terms</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="setTerm(12, this)"
+                                    class="est-term-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold text-charcoal hover:border-charcoal transition">12
+                                    months</button>
+                                <button onclick="setTerm(24, this)"
+                                    class="est-term-btn border-2 border-charcoal bg-charcoal text-white rounded-xl py-3 text-xs font-bold transition">24
+                                    months</button>
+                                <button onclick="setTerm(36, this)"
+                                    class="est-term-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold text-charcoal hover:border-charcoal transition">36
+                                    months</button>
+                                <button onclick="setTerm(60, this)"
+                                    class="est-term-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold text-charcoal hover:border-charcoal transition">60
+                                    months</button>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <label class="text-xs font-bold text-charcoal uppercase tracking-widest">3. Down
+                                    Payment</label>
+                                <span id="dpPercLabel" class="text-gold-600 font-bold text-sm font-mono">20%</span>
+                            </div>
+                            <input type="range" id="dpSlider" min="10" max="50" value="20" step="5"
+                                oninput="updateEstimate()" class="w-full">
+                            <div class="flex justify-between text-[10px] text-gray-400 mt-1.5">
+                                <span>10%</span><span>30%</span><span>50%</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-3">4.
+                                Optional Add-ons</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-3 cursor-pointer group"><input type="checkbox"
+                                        id="addon_flowers" value="5000" onchange="updateEstimate()"
+                                        class="w-4 h-4 accent-gold-500"><span
+                                        class="text-sm text-gray-600 group-hover:text-charcoal transition">Annual floral
+                                        package <span class="text-gold-600 font-semibold">+₱5,000</span></span></label>
+                                <label class="flex items-center gap-3 cursor-pointer group"><input type="checkbox"
+                                        id="addon_plaque" value="8000" onchange="updateEstimate()"
+                                        class="w-4 h-4 accent-gold-500"><span
+                                        class="text-sm text-gray-600 group-hover:text-charcoal transition">Custom laser
+                                        photo engraving <span
+                                            class="text-gold-600 font-semibold">+₱8,000</span></span></label>
+                                <label class="flex items-center gap-3 cursor-pointer group"><input type="checkbox"
+                                        id="addon_light" value="3500" onchange="updateEstimate()"
+                                        class="w-4 h-4 accent-gold-500"><span
+                                        class="text-sm text-gray-600 group-hover:text-charcoal transition">Eternal flame
+                                        LED upgrade <span
+                                            class="text-gold-600 font-semibold">+₱3,500</span></span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-10 bg-charcoal text-white flex flex-col justify-between">
+                        <div>
+                            <div class="text-gold-400 text-[10px] font-bold tracking-widest uppercase mb-6">Your
+                                Estimated Plan</div>
+                            <div class="mb-6 pb-6 border-b border-white/10">
+                                <div class="text-gray-400 text-xs mb-1.5">Total Package Price</div>
+                                <div id="est_total" class="text-4xl font-serif font-bold text-white">₱48,000</div>
+                            </div>
+                            <div class="space-y-4 mb-8">
+                                <div class="flex justify-between items-center"><span class="text-gray-400 text-sm">Down
+                                        Payment (<span id="est_dpPct">20</span>%)</span><span id="est_dp"
+                                        class="font-bold text-white font-mono">₱9,600</span></div>
+                                <div class="flex justify-between items-center"><span
+                                        class="text-gray-400 text-sm">Remaining Balance</span><span id="est_balance"
+                                        class="font-bold text-white font-mono">₱38,400</span></div>
+                                <div class="flex justify-between items-center pt-4 border-t border-white/10"><span
+                                        class="text-gray-300 text-sm font-semibold">Monthly Installment</span><span
+                                        id="est_monthly"
+                                        class="text-2xl font-serif font-bold text-gold-400">₱1,600</span></div>
+                                <div class="flex justify-between items-center text-xs text-gray-500"><span>over <span
+                                            id="est_months">24</span> months</span><span
+                                        id="est_term_label">Interest-free plan</span></div>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl p-4 border border-white/10 mb-4">
+                                <div class="flex items-center justify-between mb-2"><span
+                                        class="text-gray-400 text-xs uppercase tracking-widest">Availability</span><span
+                                        class="text-green-400 text-xs font-semibold">● Good</span></div>
+                                <div class="w-full bg-white/10 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-green-500 to-gold-400 h-2 rounded-full w-3/5">
+                                    </div>
+                                </div>
+                                <div class="text-gray-500 text-[11px] mt-1.5">~60% slots remaining in your selection
+                                </div>
+                            </div>
+                        </div>
+                        <button id="est_cta" onclick="selectPlan('Single Niche', 48000)"
+                            class="w-full bg-gold-500 hover:bg-gold-600 text-white py-4 rounded-xl font-bold transition shadow-lg shadow-gold-500/20 flex items-center justify-center gap-2 mt-4">
+                            <i class="fa-solid fa-lock text-sm"></i> Reserve This Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANS -->
+    <section id="plans" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase">Investment in Peace</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mt-4 text-charcoal">Premium Niches</h2>
+                <div class="w-24 h-1 bg-gold-400 mx-auto mt-6 mb-6"></div>
+                <p class="text-gray-500 max-w-xl mx-auto font-light">All plans include perpetual maintenance, 24/7
+                    security, and complimentary annual cleaning.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto reveal">
+                <div class="niche-card bg-white border border-gray-100 rounded-2xl p-8 flex flex-col shadow-sm">
+                    <div class="text-gold-600 text-xs font-bold tracking-widest uppercase mb-2">Single Niche</div>
+                    <div class="text-4xl font-serif font-bold text-charcoal mb-1">₱48,000</div>
+                    <div class="text-gray-400 text-xs mb-8 pb-8 border-b border-gray-100">One-time • 1 Urn</div>
+                    <ul class="space-y-3.5 mb-8 text-gray-600 flex-grow text-sm">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-500 mt-1 text-xs"></i>
+                            Premium Italian marble plaque</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-500 mt-1 text-xs"></i>
+                            Ambient LED backlighting</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-500 mt-1 text-xs"></i>
+                            Standard name & date engraving</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-500 mt-1 text-xs"></i>
+                            Annual cleaning service</li>
+                    </ul>
+                    <button onclick="selectPlan('Single Niche', 48000)"
+                        class="w-full py-4 rounded-xl font-semibold border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white transition text-sm">Select
+                        Plan</button>
+                </div>
+                <div
+                    class="niche-card bg-charcoal border-2 border-gold-400 rounded-2xl p-8 flex flex-col shadow-xl transform md:-translate-y-4 relative">
+                    <div
+                        class="absolute -top-4 left-1/2 -translate-x-1/2 badge text-white text-[10px] font-bold px-5 py-1.5 rounded-full tracking-wider uppercase shadow-lg whitespace-nowrap">
+                        ★ Most Chosen</div>
+                    <div class="text-gold-400 text-xs font-bold tracking-widest uppercase mb-2 mt-2">Double Niche</div>
+                    <div class="text-4xl font-serif font-bold text-white mb-1">₱78,000</div>
+                    <div class="text-gray-400 text-xs mb-8 pb-8 border-b border-gray-700">One-time • 2 Urns</div>
+                    <ul class="space-y-3.5 mb-8 text-gray-300 flex-grow text-sm">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-400 mt-1 text-xs"></i>
+                            All Single Niche features</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-400 mt-1 text-xs"></i>
+                            Premium rose granite upgrade</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-400 mt-1 text-xs"></i>
+                            Custom embedded photo frame</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-400 mt-1 text-xs"></i>
+                            Priority scheduling</li>
+                    </ul>
+                    <button onclick="selectPlan('Double Niche', 78000)"
+                        class="w-full py-4 rounded-xl font-semibold bg-gold-500 text-white hover:bg-gold-600 transition shadow-lg shadow-gold-500/30 text-sm">Select
+                        Plan</button>
+                </div>
+                <div class="niche-card bg-white border border-gray-100 rounded-2xl p-8 flex flex-col shadow-sm">
+                    <div class="text-gold-600 text-xs font-bold tracking-widest uppercase mb-2">Family Suite</div>
+                    <div class="text-4xl font-serif font-bold text-charcoal mb-1">₱145,000</div>
+                    <div class="text-gray-400 text-xs mb-8 pb-8 border-b border-gray-100">One-time • 4 Urns</div>
+                    <ul class="space-y-3.5 mb-8 text-gray-600 flex-grow text-sm">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-500 mt-1 text-xs"></i>
+                            All Double Niche features</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-500 mt-1 text-xs"></i>
+                            Private viewing vestibule</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-500 mt-1 text-xs"></i>
+                            Quarterly floral arrangements</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-gold-500 mt-1 text-xs"></i>
+                            VIP bereavement counseling</li>
+                    </ul>
+                    <button onclick="selectPlan('Family Suite', 145000)"
+                        class="w-full py-4 rounded-xl font-semibold border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white transition text-sm">Select
+                        Plan</button>
+                </div>
+            </div>
+            <div class="mt-10 text-center reveal">
+                <div
+                    class="inline-flex items-center gap-3 bg-gold-50 border border-gold-200 rounded-2xl px-6 py-4 text-sm text-gold-700">
+                    <i class="fa-solid fa-calendar-check text-gold-500"></i>
+                    <span><strong>Flexible Installment Plans Available</strong> — Up to 60 months, 0% interest. <a
+                            href="#estimator" class="underline hover:text-gold-800 transition">Use our estimator
+                            ↑</a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="py-24 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase">Simple Process</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mt-4 text-charcoal">How to Get Started</h2>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6 reveal">
+                <div class="text-center group">
+                    <div
+                        class="w-16 h-16 bg-gold-50 group-hover:bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-5 transition-all duration-300 border border-gold-100">
+                        <i
+                            class="fa-solid fa-magnifying-glass text-2xl text-gold-500 group-hover:text-white transition"></i>
+                    </div>
+                    <div class="text-gold-500 font-mono text-xs font-bold mb-2 tracking-widest">STEP 01</div>
+                    <h4 class="font-serif font-bold text-lg text-charcoal mb-2">Choose a Plan</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Browse our niche types and use the cost
+                        estimator to find what fits your budget.</p>
+                </div>
+                <div class="hidden md:flex items-center justify-center">
+                    <div class="w-full h-0.5 bg-gradient-to-r from-gold-300 to-gold-200 relative"><i
+                            class="fa-solid fa-chevron-right text-gold-400 absolute right-0 top-1/2 -translate-y-1/2"></i>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div
+                        class="w-16 h-16 bg-gold-50 group-hover:bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-5 transition-all duration-300 border border-gold-100">
+                        <i
+                            class="fa-solid fa-file-signature text-2xl text-gold-500 group-hover:text-white transition"></i>
+                    </div>
+                    <div class="text-gold-500 font-mono text-xs font-bold mb-2 tracking-widest">STEP 02</div>
+                    <h4 class="font-serif font-bold text-lg text-charcoal mb-2">Reserve & Sign</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Complete the reservation form and sign
+                        your contract with our expert team.</p>
+                </div>
+                <div class="hidden md:flex items-center justify-center">
+                    <div class="w-full h-0.5 bg-gradient-to-r from-gold-300 to-gold-200 relative"><i
+                            class="fa-solid fa-chevron-right text-gold-400 absolute right-0 top-1/2 -translate-y-1/2"></i>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div
+                        class="w-16 h-16 bg-gold-50 group-hover:bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-5 transition-all duration-300 border border-gold-100">
+                        <i class="fa-solid fa-credit-card text-2xl text-gold-500 group-hover:text-white transition"></i>
+                    </div>
+                    <div class="text-gold-500 font-mono text-xs font-bold mb-2 tracking-widest">STEP 03</div>
+                    <h4 class="font-serif font-bold text-lg text-charcoal mb-2">Make Payment</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Pay via bank transfer or in-person.
+                        Upload your proof of payment securely.</p>
+                </div>
+                <div class="hidden md:flex items-center justify-center">
+                    <div class="w-full h-0.5 bg-gradient-to-r from-gold-300 to-gold-200 relative"><i
+                            class="fa-solid fa-chevron-right text-gold-400 absolute right-0 top-1/2 -translate-y-1/2"></i>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div
+                        class="w-16 h-16 bg-gold-50 group-hover:bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-5 transition-all duration-300 border border-gold-100">
+                        <i class="fa-solid fa-dove text-2xl text-gold-500 group-hover:text-white transition"></i>
+                    </div>
+                    <div class="text-gold-500 font-mono text-xs font-bold mb-2 tracking-widest">STEP 04</div>
+                    <h4 class="font-serif font-bold text-lg text-charcoal mb-2">Rest in Peace</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Your loved one's niche is prepared with
+                        the utmost care and dignity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 bg-mist">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 relative reveal">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop"
+                    alt="Columbarium Architecture" class="rounded-3xl shadow-2xl w-full h-[520px] object-cover">
+                <div
+                    class="absolute -bottom-6 -right-6 bg-gold-500 text-white p-8 rounded-2xl shadow-2xl hidden md:block border-4 border-white">
+                    <h4 class="text-5xl font-serif font-bold mb-1">100%</h4>
+                    <p class="text-sm font-medium tracking-wide">Perpetual Care Fund</p>
+                </div>
+                <div
+                    class="absolute -top-6 -left-6 bg-white text-charcoal p-5 rounded-2xl shadow-xl hidden md:block border border-gray-100">
+                    <div class="text-2xl font-serif font-bold text-charcoal">30+</div>
+                    <p class="text-xs font-medium text-gray-500 tracking-wide mt-0.5">Years of Service</p>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 reveal">
+                <span class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase mb-4 block">Our Heritage</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-charcoal mb-6 leading-tight">Sanctuary of
+                    Comfort & Reflection</h2>
+                <p class="text-gray-600 leading-relaxed mb-8 text-lg font-light">Located in the heart of Bacolod City,
+                    our columbarium provides a serene and dignified environment for your departed loved ones. We combine
+                    modern architectural design with peaceful landscaping.</p>
+                <div class="grid grid-cols-2 gap-8 mb-8">
+                    <div><i class="fa-solid fa-shield-halved text-2xl text-gold-500 mb-3"></i>
+                        <h4 class="font-bold text-charcoal mb-1 text-sm">24/7 Security</h4>
+                        <p class="text-sm text-gray-500 font-light">Round-the-clock monitoring and strict secure access
+                            control.</p>
+                    </div>
+                    <div><i class="fa-solid fa-leaf text-2xl text-gold-500 mb-3"></i>
+                        <h4 class="font-bold text-charcoal mb-1 text-sm">Tranquil Gardens</h4>
+                        <p class="text-sm text-gray-500 font-light">Manicured spaces for quiet reflection and family
+                            visits.</p>
+                    </div>
+                    <div><i class="fa-solid fa-heart text-2xl text-gold-500 mb-3"></i>
+                        <h4 class="font-bold text-charcoal mb-1 text-sm">Bereavement Care</h4>
+                        <p class="text-sm text-gray-500 font-light">Professional counseling and support during difficult
+                            times.</p>
+                    </div>
+                    <div><i class="fa-solid fa-star text-2xl text-gold-500 mb-3"></i>
+                        <h4 class="font-bold text-charcoal mb-1 text-sm">Premium Materials</h4>
+                        <p class="text-sm text-gray-500 font-light">Italian marble, rose granite, and custom engravings.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-24 bg-charcoal overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14 reveal">
+                <span class="text-gold-400 text-xs tracking-[0.25em] font-bold uppercase">Families We've Served</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mt-4 text-white">Words of Comfort</h2>
+            </div>
+            <div class="testimonial-track flex gap-6 pb-4" id="testimonialTrack">
+                <div class="testimonial-item flex-shrink-0 w-80 bg-white/5 border border-white/10 rounded-2xl p-7">
+                    <div class="flex gap-1 mb-4"><i class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i></div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light italic">"The staff were incredibly
+                        compassionate during our family's most difficult time. The facility is beautiful and
+                        well-maintained. We felt truly at peace visiting."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-white font-bold text-sm">
+                            MR</div>
+                        <div>
+                            <div class="text-white font-semibold text-sm">Maria Reyes</div>
+                            <div class="text-gray-500 text-xs">Bacolod City, 2024</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item flex-shrink-0 w-80 bg-white/5 border border-white/10 rounded-2xl p-7">
+                    <div class="flex gap-1 mb-4"><i class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i></div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light italic">"We chose the Family Suite
+                        and it exceeded every expectation. The private vestibule gave us a truly personal space to visit
+                        our parents together."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-white font-bold text-sm">
+                            JT</div>
+                        <div>
+                            <div class="text-white font-semibold text-sm">Jose Torrejos</div>
+                            <div class="text-gray-500 text-xs">Talisay City, 2025</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item flex-shrink-0 w-80 bg-white/5 border border-white/10 rounded-2xl p-7">
+                    <div class="flex gap-1 mb-4"><i class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i></div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light italic">"The installment plan was
+                        very flexible and the process was smooth from start to finish. The rose granite upgrade for our
+                        double niche looks stunning."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-white font-bold text-sm">
+                            LC</div>
+                        <div>
+                            <div class="text-white font-semibold text-sm">Lourdes Chan</div>
+                            <div class="text-gray-500 text-xs">Silay City, 2025</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item flex-shrink-0 w-80 bg-white/5 border border-white/10 rounded-2xl p-7">
+                    <div class="flex gap-1 mb-4"><i class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i><i
+                            class="fa-solid fa-star text-gold-400 text-xs"></i></div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light italic">"A dignified, peaceful
+                        place. Our mother always wanted to rest somewhere beautiful. Teresa Development truly delivered
+                        on that promise."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-white font-bold text-sm">
+                            AP</div>
+                        <div>
+                            <div class="text-white font-semibold text-sm">Ana Palma</div>
+                            <div class="text-gray-500 text-xs">Bacolod City, 2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-3 mt-8 justify-center">
+                <button onclick="scrollTestimonial(-1)"
+                    class="w-10 h-10 rounded-full border border-white/20 text-gray-400 hover:bg-gold-500 hover:text-white hover:border-gold-500 transition flex items-center justify-center"><i
+                        class="fa-solid fa-chevron-left text-xs"></i></button>
+                <button onclick="scrollTestimonial(1)"
+                    class="w-10 h-10 rounded-full border border-white/20 text-gray-400 hover:bg-gold-500 hover:text-white hover:border-gold-500 transition flex items-center justify-center"><i
+                        class="fa-solid fa-chevron-right text-xs"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 bg-cream">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-14 reveal">
+                <span class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase">Frequently Asked</span>
+                <h2 class="text-4xl font-serif font-bold mt-4 text-charcoal">Questions & Answers</h2>
+            </div>
+            <div class="space-y-3 reveal">
+                <div class="faq-item border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <button
+                        class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center font-semibold text-charcoal text-sm hover:text-gold-600 transition"
+                        onclick="toggleFaq(this)">What is included in the perpetual maintenance guarantee?<i
+                            class="fa-solid fa-plus text-gold-500 transition-transform flex-shrink-0 ml-4"></i></button>
+                    <div class="faq-body hidden px-6 pb-5 text-sm text-gray-500 font-light leading-relaxed">Perpetual
+                        maintenance includes annual deep cleaning, structural upkeep, LED lighting maintenance,
+                        landscaping of surrounding areas, and 24/7 security coverage — all at no additional cost for the
+                        lifetime of the niche.</div>
+                </div>
+                <div class="faq-item border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <button
+                        class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center font-semibold text-charcoal text-sm hover:text-gold-600 transition"
+                        onclick="toggleFaq(this)">Can I transfer ownership of a niche?<i
+                            class="fa-solid fa-plus text-gold-500 transition-transform flex-shrink-0 ml-4"></i></button>
+                    <div class="faq-body hidden px-6 pb-5 text-sm text-gray-500 font-light leading-relaxed">Yes,
+                        ownership can be transferred to immediate family members. A small administrative fee applies.
+                        Our legal team will assist with all documentation requirements.</div>
+                </div>
+                <div class="faq-item border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <button
+                        class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center font-semibold text-charcoal text-sm hover:text-gold-600 transition"
+                        onclick="toggleFaq(this)">Are installment plans interest-free?<i
+                            class="fa-solid fa-plus text-gold-500 transition-transform flex-shrink-0 ml-4"></i></button>
+                    <div class="faq-body hidden px-6 pb-5 text-sm text-gray-500 font-light leading-relaxed">All
+                        installment plans up to 60 months are offered at 0% interest. A minimum down payment of 10% is
+                        required upon reservation. Payments can be made via bank transfer or in-person at our office.
+                    </div>
+                </div>
+                <div class="faq-item border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <button
+                        class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center font-semibold text-charcoal text-sm hover:text-gold-600 transition"
+                        onclick="toggleFaq(this)">Can I visit the columbarium before purchasing?<i
+                            class="fa-solid fa-plus text-gold-500 transition-transform flex-shrink-0 ml-4"></i></button>
+                    <div class="faq-body hidden px-6 pb-5 text-sm text-gray-500 font-light leading-relaxed">Absolutely.
+                        We encourage all prospective clients to schedule a free site visit. Our team will personally
+                        guide you through the facility, show available niches, and answer all your questions during the
+                        tour.</div>
+                </div>
+                <div class="faq-item border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <button
+                        class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center font-semibold text-charcoal text-sm hover:text-gold-600 transition"
+                        onclick="toggleFaq(this)">What happens after I upload proof of payment?<i
+                            class="fa-solid fa-plus text-gold-500 transition-transform flex-shrink-0 ml-4"></i></button>
+                    <div class="faq-body hidden px-6 pb-5 text-sm text-gray-500 font-light leading-relaxed">Our finance
+                        team reviews your submission within 1–2 business days. Upon verification, an official receipt
+                        and your niche certificate will be emailed to you. Our team will also reach out to schedule your
+                        next steps.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="py-20 bg-charcoal text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5"
+            style="background-image: radial-gradient(circle at 20% 50%, #c58b34 0%, transparent 50%), radial-gradient(circle at 80% 50%, #c58b34 0%, transparent 50%);">
+        </div>
+        <div class="relative max-w-3xl mx-auto px-6 reveal">
+            <i class="fa-solid fa-dove text-gold-400 text-4xl mb-6"></i>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold mb-4">Begin with a Conversation</h2>
+            <p class="text-gray-400 font-light text-lg mb-10 leading-relaxed">Our bereavement specialists are here to
+                guide your family with compassion, clarity, and care.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:034-123-4567"
+                    class="bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-xl shadow-gold-500/30 flex items-center justify-center gap-2"><i
+                        class="fa-solid fa-phone"></i> Call Us Now</a>
+                <button onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})"
+                    class="border border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold transition flex items-center justify-center gap-2"><i
+                        class="fa-solid fa-eye"></i> Browse Plans</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-[#161616] text-white pt-24 pb-10">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-3 mb-6">
+                    <i class="fa-solid fa-dove text-3xl text-gold-500"></i>
+                    <div class="leading-tight">
+                        <span class="block text-xl font-serif font-bold text-white">Teresa Development</span>
+                        <span
+                            class="block text-[10px] font-medium text-gold-500 tracking-[0.2em] uppercase">Corporation</span>
+                    </div>
+                </div>
+                <p class="text-gray-500 font-light max-w-sm mb-8 leading-relaxed text-sm">Providing world-class memorial
+                    care and dignified, beautiful resting places for generations of families in Negros Occidental.</p>
+                <div class="flex gap-3 mb-6">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold-500 text-gray-400 hover:text-white transition"><i
+                            class="fa-brands fa-facebook-f text-sm"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold-500 text-gray-400 hover:text-white transition"><i
+                            class="fa-brands fa-instagram text-sm"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold-500 text-gray-400 hover:text-white transition"><i
+                            class="fa-brands fa-tiktok text-sm"></i></a>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/10 text-sm">
+                    <div class="text-gray-400 text-[10px] font-bold tracking-widest uppercase mb-3">Office Hours</div>
+                    <div class="flex justify-between text-gray-400 text-xs mb-1.5"><span>Mon – Fri</span><span>8:00 AM –
+                            5:00 PM</span></div>
+                    <div class="flex justify-between text-gray-400 text-xs mb-1.5"><span>Saturday</span><span>8:00 AM –
+                            12:00 PM</span></div>
+                    <div class="flex justify-between text-gray-500 text-xs"><span>Sunday</span><span>By
+                            appointment</span></div>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-serif font-bold text-base mb-6 text-white">Contact Us</h4>
+                <ul class="space-y-4 text-gray-500 text-sm font-light">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-location-dot mt-1 text-gold-500"></i> 123
+                        Memorial Drive, Bacolod City, Negros Occ.</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-gold-500"></i> (034) 123-4567
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-brands fa-whatsapp text-gold-500"></i> +63 917 123
+                        4567</li>
+                    <li class="flex items-center gap-3 hover:text-white transition"><i
+                            class="fa-solid fa-envelope text-gold-500"></i> inquiry@bacolodeternal.com</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-serif font-bold text-base mb-6 text-white">Quick Links</h4>
+                <ul class="space-y-3 text-gray-500 text-sm font-light">
+                    <li><a href="#about" class="hover:text-gold-400 transition">About Us</a></li>
+                    <li><a href="#niches" class="hover:text-gold-400 transition">Niche Types</a></li>
+                    <li><a href="#estimator" class="hover:text-gold-400 transition">Cost Estimator</a></li>
+                    <li><a href="#plans" class="hover:text-gold-400 transition">Our Plans</a></li>
+                    <li><a href="#" class="hover:text-gold-400 transition">Terms & Conditions</a></li>
+                    <li><a href="#" class="hover:text-gold-400 transition">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-gray-600">
+            <span>© 2026 Bacolod Eternal Rest Columbarium · Teresa Development Corporation. All rights reserved.</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-lock text-gold-600 text-[10px]"></i> Secured
+                payments via BDO</span>
+        </div>
+    </footer>
+
+    <!-- PAYMENT MODAL -->
+    <div id="paymentModal" class="fixed inset-0 z-[100] modal flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-charcoal/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative w-full max-w-lg modal-content bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div class="px-8 py-6 bg-cream border-b border-gray-100 flex justify-between items-center">
+                <div>
+                    <span class="text-gold-600 text-[10px] font-bold tracking-[0.2em] uppercase">Secure Checkout</span>
+                    <h3 id="modalPlanName" class="text-2xl font-serif font-bold text-charcoal mt-1"></h3>
+                </div>
+                <button onclick="closeModal()"
+                    class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-charcoal flex items-center justify-center transition"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="paymentFormState" class="p-8">
+                <div class="flex justify-between items-end mb-8 bg-cream p-5 rounded-2xl border border-gray-100">
+                    <div>
+                        <div class="text-gray-400 text-[10px] mb-1 uppercase tracking-[0.1em] font-medium">Total Amount
+                        </div>
+                        <div id="modalPrice" class="text-3xl font-serif font-bold text-charcoal"></div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-gray-400 text-[10px] mb-1 uppercase tracking-[0.1em] font-medium">Reference No.
+                        </div>
+                        <div id="modalRef"
+                            class="font-mono text-sm text-gold-600 font-bold bg-gold-50 border border-gold-100 px-3 py-1.5 rounded-lg tracking-wider">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-8 p-6 border border-gray-100 rounded-2xl bg-white hover:border-gold-200 transition">
+                    <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">Bank Transfer Details
+                    </h4>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-xs">
+                            BDO</div>
+                        <div>
+                            <div class="font-semibold text-charcoal text-sm">Bacolod Main Branch</div>
+                            <div class="text-xs text-gray-500">Bacolod Eternal Rest Inc.</div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-gray-50 rounded-xl p-3.5 font-mono text-xl text-center tracking-widest text-charcoal border border-gray-200 font-bold">
+                        1234-5678-9012</div>
+                </div>
+                <div class="mb-8">
+                    <label class="block text-sm font-bold text-charcoal mb-3">Upload Payment Proof</label>
+                    <label id="uploadArea"
+                        class="block border-2 border-dashed border-gray-200 hover:border-gold-500 hover:bg-gold-50 rounded-2xl p-8 text-center cursor-pointer transition group">
+                        <i
+                            class="fa-solid fa-cloud-arrow-up text-3xl text-gray-300 group-hover:text-gold-500 mb-3 transition transform group-hover:-translate-y-1"></i>
+                        <p class="text-sm text-charcoal font-medium">Click to browse or drag file here</p>
+                        <p class="text-[11px] text-gray-400 mt-2 tracking-wide">JPG, PNG or PDF (MAX. 5MB)</p>
+                        <input type="file" id="proofUpload" accept="image/*,.pdf" class="hidden"
+                            onchange="handleUpload(this)">
+                    </label>
+                    <div id="uploadStatus"
+                        class="hidden mt-3 p-4 bg-green-50 border border-green-100 rounded-2xl flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-green-500 text-lg"></i>
+                        <span id="fileName" class="text-sm text-green-800 font-medium truncate flex-grow"></span>
+                        <button onclick="clearUpload(event)"
+                            class="text-green-600 hover:text-green-800 bg-green-100 w-7 h-7 rounded-full flex items-center justify-center transition"><i
+                                class="fa-solid fa-xmark text-xs"></i></button>
+                    </div>
+                </div>
+                <button id="confirmBtn" onclick="processTransaction()"
+                    class="w-full bg-charcoal hover:bg-black text-white py-4 rounded-xl font-bold transition shadow-xl flex items-center justify-center gap-3 group">
+                    <span id="btnText" class="flex items-center tracking-wide"><i
+                            class="fa-solid fa-lock mr-2 text-gold-500 group-hover:scale-110 transition-transform"></i>
+                        CONFIRM PAYMENT</span>
+                    <i id="btnLoader" class="fa-solid fa-circle-notch fa-spin hidden text-gold-500"></i>
+                </button>
+            </div>
+            <div id="successState" class="hidden p-12 text-center">
+                <div class="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-8 relative">
+                    <div class="absolute inset-0 border-4 border-green-100 rounded-full animate-ping opacity-20"></div>
+                    <i class="fa-solid fa-check text-4xl text-green-500"></i>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-charcoal mb-3">Verification Pending</h3>
+                <p class="text-gray-500 text-sm mb-10 leading-relaxed font-light">Your proof of payment has been
+                    securely received and is under verification. We will email you the official receipt shortly.</p>
+                <button onclick="closeModal()"
+                    class="w-full bg-gold-500 hover:bg-gold-600 text-white py-4 rounded-xl font-bold transition shadow-lg shadow-gold-500/30 tracking-wide">Return
+                    to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING CHAT -->
+    <div class="fixed bottom-6 right-6 z-[90] flex flex-col items-end">
+        <div id="chatWindow"
+            class="mb-4 w-[calc(100vw-3rem)] sm:w-[380px] bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.2)] overflow-hidden flex flex-col h-[500px] max-h-[70vh] origin-bottom-right transition-all duration-300 scale-0 opacity-0 pointer-events-none border border-gray-100">
+            <div class="bg-charcoal p-5 flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative w-11 h-11 rounded-full bg-gold-500 flex items-center justify-center text-white border-2 border-white/10">
+                        <i class="fa-solid fa-user-tie text-lg"></i>
+                        <span
+                            class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-charcoal rounded-full"></span>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-sm tracking-wide">Agents</h4>
+                        <p class="text-gold-200 text-[11px] font-medium tracking-wider uppercase mt-0.5">Online Support
+                        </p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()"
+                    class="text-gray-400 hover:text-white transition w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="chatMessages" class="flex-1 p-6 overflow-y-auto space-y-6 bg-[#fdfdfd] scroll-smooth">
+                <div class="flex gap-3 max-w-[85%]">
+                    <div
+                        class="w-8 h-8 rounded-full bg-gold-500 flex-shrink-0 flex items-center justify-center text-white text-[10px] mt-1">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <div
+                        class="bg-cream border border-gray-100 text-charcoal text-[13px] p-4 rounded-2xl rounded-tl-sm shadow-sm leading-relaxed">
+                        Good day! Welcome to Bacolod Eternal Rest Columbarium. How may I assist you with your inquiries
+                        today?</div>
+                </div>
+            </div>
+            <div class="p-4 bg-white border-t border-gray-100">
+                <form onsubmit="sendMessage(event)" class="flex gap-2 relative">
+                    <input type="text" id="chatInput" placeholder="Type your message..."
+                        class="flex-1 bg-gray-50 border border-gray-200 text-charcoal text-sm rounded-xl pl-5 pr-12 py-3.5 focus:outline-none focus:border-gold-500 transition font-light placeholder:text-gray-400"
+                        autocomplete="off">
+                    <button type="submit"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 text-white bg-gold-500 hover:bg-gold-600 w-9 h-9 rounded-lg flex items-center justify-center transition"><i
+                            class="fa-solid fa-paper-plane text-xs"></i></button>
+                </form>
+            </div>
+        </div>
+        <button onclick="toggleChat()" id="chatToggleBtn"
+            class="w-16 h-16 bg-charcoal hover:bg-black text-white rounded-full shadow-[0_10px_30px_rgba(42,42,42,0.4)] flex items-center justify-center text-2xl transition-all hover:-translate-y-1 relative group border-2 border-white/10">
+            <i id="chatToggleIcon"
+                class="fa-solid fa-message transition-transform duration-300 group-hover:scale-110 text-gold-400"></i>
+            <span
+                class="absolute top-0 right-0 w-4 h-4 bg-red-500 border-2 border-charcoal rounded-full animate-pulse"></span>
+        </button>
+    </div>
+
+    <script>
+        // ---- SCROLL REVEAL ----
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ---- MOBILE MENU ----
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // ---- MOBILE ACCORDION ----
+        function toggleMobileAcc(id) {
+            const body = document.getElementById(id);
+            const icon = document.getElementById(id + '_icon');
+            const isOpen = body.classList.contains('open');
+            body.classList.toggle('open', !isOpen);
+            if (icon) icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+        }
+
+        function toggleMobileSub(id) {
+            const body = document.getElementById(id);
+            const icon = document.getElementById(id + '_icon');
+            const isOpen = body.classList.contains('open');
+            body.classList.toggle('open', !isOpen);
+            if (icon) icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+        }
+
+        // ---- TABS ----
+        function switchTab(name, e) {
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.classList.add('bg-mist'); });
+            document.getElementById('tab-' + name).classList.add('active');
+            if (e && e.currentTarget) { e.currentTarget.classList.add('active'); e.currentTarget.classList.remove('bg-mist'); }
+        }
+
+        // ---- COST ESTIMATOR ----
+        let estNiche = 'single', estPrice = 48000, estTerm = 24;
+        function setNiche(name, price, btn) {
+            estNiche = name; estPrice = price;
+            document.querySelectorAll('.est-niche-btn').forEach(b => { b.classList.remove('bg-charcoal', 'text-white', 'border-charcoal'); b.classList.add('border-gray-200', 'text-charcoal'); });
+            btn.classList.add('bg-charcoal', 'text-white', 'border-charcoal'); btn.classList.remove('border-gray-200', 'text-charcoal');
+            updateEstimate();
+        }
+        function setTerm(t, btn) {
+            estTerm = t;
+            document.querySelectorAll('.est-term-btn').forEach(b => { b.classList.remove('bg-charcoal', 'text-white', 'border-charcoal'); b.classList.add('border-gray-200', 'text-charcoal'); });
+            btn.classList.add('bg-charcoal', 'text-white', 'border-charcoal'); btn.classList.remove('border-gray-200', 'text-charcoal');
+            updateEstimate();
+        }
+        function updateEstimate() {
+            const dpPct = parseInt(document.getElementById('dpSlider').value);
+            const addons = ['addon_flowers', 'addon_plaque', 'addon_light'].reduce((s, id) => {
+                const el = document.getElementById(id); return s + (el.checked ? parseInt(el.value) : 0);
+            }, 0);
+            const total = estPrice + addons;
+            const dp = Math.round(total * dpPct / 100);
+            const balance = total - dp;
+            const monthly = Math.ceil(balance / estTerm);
+            document.getElementById('dpPercLabel').textContent = dpPct + '%';
+            document.getElementById('est_dpPct').textContent = dpPct;
+            document.getElementById('est_total').textContent = '₱' + total.toLocaleString('en-PH');
+            document.getElementById('est_dp').textContent = '₱' + dp.toLocaleString('en-PH');
+            document.getElementById('est_balance').textContent = '₱' + balance.toLocaleString('en-PH');
+            document.getElementById('est_monthly').textContent = '₱' + monthly.toLocaleString('en-PH');
+            document.getElementById('est_months').textContent = estTerm;
+            document.getElementById('est_term_label').textContent = estTerm <= 24 ? 'Interest-free plan' : '0% interest applies';
+            const nicheNames = { single: 'Single Niche', double: 'Double Niche', family: 'Family Suite' };
+            document.getElementById('est_cta').onclick = () => selectPlan(nicheNames[estNiche], estPrice);
+        }
+
+        // ---- FAQ ----
+        function toggleFaq(btn) {
+            const body = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            const isOpen = !body.classList.contains('hidden');
+            document.querySelectorAll('.faq-body').forEach(b => b.classList.add('hidden'));
+            document.querySelectorAll('.faq-btn i').forEach(i => { i.classList.remove('rotate-45'); });
+            if (!isOpen) { body.classList.remove('hidden'); icon.classList.add('rotate-45'); }
+        }
+
+        // ---- TESTIMONIAL ----
+        function scrollTestimonial(dir) {
+            const t = document.getElementById('testimonialTrack');
+            t.scrollBy({ left: dir * 320, behavior: 'smooth' });
+        }
+
+        // ---- MODAL ----
+        let isFileUploaded = false;
+        function selectPlan(name, price) {
+            document.getElementById('modalPlanName').textContent = name;
+            document.getElementById('modalPrice').textContent = '₱' + price.toLocaleString('en-PH');
+            document.getElementById('modalRef').textContent = name.substring(0, 3).toUpperCase() + '-' + Math.floor(100000 + Math.random() * 900000);
+            openModal();
+        }
+        function openModal() {
+            document.getElementById('paymentModal').classList.add('active');
+            document.getElementById('paymentFormState').classList.remove('hidden');
+            document.getElementById('successState').classList.add('hidden');
+            clearUpload(new Event('click'));
+        }
+        function closeModal() { document.getElementById('paymentModal').classList.remove('active'); }
+        function handleUpload(input) {
+            if (input.files && input.files[0]) {
+                document.getElementById('fileName').textContent = input.files[0].name;
+                document.getElementById('uploadArea').classList.add('hidden');
+                document.getElementById('uploadStatus').classList.remove('hidden');
+                isFileUploaded = true;
+            }
+        }
+        function clearUpload(e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            document.getElementById('proofUpload').value = '';
+            document.getElementById('uploadArea').classList.remove('hidden');
+            document.getElementById('uploadStatus').classList.add('hidden');
+            isFileUploaded = false;
+        }
+        function processTransaction() {
+            if (!isFileUploaded) {
+                const ua = document.getElementById('uploadArea');
+                ua.classList.add('border-red-400', 'bg-red-50');
+                setTimeout(() => ua.classList.remove('border-red-400', 'bg-red-50'), 600);
+                return;
+            }
+            document.getElementById('btnText').classList.add('hidden');
+            document.getElementById('btnLoader').classList.remove('hidden');
+            document.getElementById('confirmBtn').disabled = true;
+            setTimeout(() => {
+                document.getElementById('paymentFormState').classList.add('hidden');
+                document.getElementById('successState').classList.remove('hidden');
+                document.getElementById('btnText').classList.remove('hidden');
+                document.getElementById('btnLoader').classList.add('hidden');
+                document.getElementById('confirmBtn').disabled = false;
+            }, 1800);
+        }
+
+        // ---- CHAT ----
+        function toggleChat() {
+            const cw = document.getElementById('chatWindow');
+            const icon = document.getElementById('chatToggleIcon');
+            const btn = document.getElementById('chatToggleBtn');
+            const dot = btn.querySelector('span');
+            cw.classList.toggle('scale-0'); cw.classList.toggle('opacity-0'); cw.classList.toggle('pointer-events-none');
+            if (!cw.classList.contains('scale-0')) {
+                icon.classList.replace('fa-message', 'fa-chevron-down');
+                icon.classList.replace('text-gold-400', 'text-white');
+                if (dot) dot.style.display = 'none';
+                setTimeout(() => document.getElementById('chatInput').focus(), 300);
+            } else {
+                icon.classList.replace('fa-chevron-down', 'fa-message');
+                icon.classList.replace('text-white', 'text-gold-400');
+            }
+        }
+        function sendMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+            const cm = document.getElementById('chatMessages');
+            cm.insertAdjacentHTML('beforeend', `<div class="flex gap-3 max-w-[85%] ml-auto justify-end"><div class="bg-charcoal text-white text-[13px] p-4 rounded-2xl rounded-tr-sm shadow-sm font-medium leading-relaxed">${message}</div></div>`);
+            input.value = '';
+            cm.scrollTop = cm.scrollHeight;
+            const tid = 'typing-' + Date.now();
+            cm.insertAdjacentHTML('beforeend', `<div id="${tid}" class="flex gap-3 max-w-[85%] animate-pulse mt-4"><div class="w-8 h-8 rounded-full bg-gold-500 flex-shrink-0 flex items-center justify-center text-white text-[10px] mt-1"><i class="fa-solid fa-user-tie"></i></div><div class="bg-white border border-gray-100 p-4 rounded-2xl rounded-tl-sm flex items-center gap-2"><div class="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style="animation-delay:0ms"></div><div class="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style="animation-delay:150ms"></div><div class="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style="animation-delay:300ms"></div></div></div>`);
+            cm.scrollTop = cm.scrollHeight;
+            setTimeout(() => {
+                const ti = document.getElementById(tid);
+                if (ti) ti.remove();
+                cm.insertAdjacentHTML('beforeend', `<div class="flex gap-3 max-w-[85%] mt-4"><div class="w-8 h-8 rounded-full bg-gold-500 flex-shrink-0 flex items-center justify-center text-white text-[10px] mt-1"><i class="fa-solid fa-user-tie"></i></div><div class="bg-cream border border-gray-100 text-charcoal text-[13px] p-4 rounded-2xl rounded-tl-sm shadow-sm leading-relaxed">Thank you for your inquiry. A bereavement counselor will be with you shortly to assist with "<em>${message}</em>". In the meantime, feel free to browse our premium columbarium plans.</div></div>`);
+                cm.scrollTop = cm.scrollHeight;
+            }, 1200);
+        }
+
+        updateEstimate();
+    </script>
+</body>
+
+</html>
