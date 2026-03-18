@@ -1,0 +1,548 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Need Plan â€” Acropolis Garden | Teresa Development</title>
+    <meta name="description"
+        content="Acropolis Garden Pre-Need Plan â€” lock in today's prices for tomorrow's memorial services. Flexible installments up to 60 months.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['DM Sans', 'sans-serif'], serif: ['Cormorant Garamond', 'serif'], mono: ['DM Mono', 'monospace'] }, colors: { gold: { 50: '#fbf9f2', 100: '#f5f0db', 200: '#eadcae', 300: '#ddc27b', 400: '#d1a450', 500: '#c58b34', 600: '#b06f2a', 700: '#935326', 800: '#794324', 900: '#623820' }, cream: '#FDFBF7', charcoal: '#1E1E1E', mist: '#F5F3EE' } } } }</script>
+    <style>
+        :root {
+            --gold: #c58b34;
+            --charcoal: #1E1E1E;
+            --cream: #FDFBF7
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal)
+        }
+
+        .glass-nav {
+            background: rgba(253, 251, 247, .96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(197, 139, 52, .15)
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity .7s ease, transform .7s ease
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #c58b34 0%, #e8c07d 50%, #b06f2a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .announcement {
+            background: linear-gradient(90deg, #1E1E1E 0%, #2C2C2C 100%)
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 5px;
+            border-radius: 9999px;
+            background: #e5e5e5;
+            outline: none
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+            border: 3px solid white
+        }
+
+        .modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s ease
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible
+        }
+
+        .modal-content {
+            transform: scale(.95) translateY(20px);
+            transition: all .3s cubic-bezier(.4, 0, .2, 1)
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) translateY(0)
+        }
+
+        .nav-mega-wrapper {
+            position: relative
+        }
+
+        #productsDropdown {
+            position: absolute;
+            left: 0;
+            top: calc(100% + 4px);
+            width: 240px;
+            background: #fff;
+            border: 1px solid #f0ece4;
+            border-radius: 14px;
+            box-shadow: 0 20px 40px -8px rgba(30, 30, 30, .18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: opacity .25s ease, transform .25s ease, visibility .25s;
+            z-index: 200
+        }
+
+        .nav-mega-wrapper:hover #productsDropdown,
+        #productsDropdown:hover {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0)
+        }
+
+        .dd-parent {
+            position: relative;
+            cursor: pointer
+        }
+
+        .dd-parent-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 11px 16px;
+            font-size: 13px;
+            color: #4b5563;
+            transition: background .15s, color .15s;
+            border: none;
+            background: transparent;
+            text-align: left;
+            gap: 8px
+        }
+
+        .dd-parent:not(:last-child) .dd-parent-btn {
+            border-bottom: 1px solid #f9f5ef
+        }
+
+        .dd-parent-btn:hover,
+        .dd-parent:hover .dd-parent-btn {
+            background: #fbf9f2;
+            color: #b06f2a
+        }
+
+        .dd-parent-btn .dd-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1
+        }
+
+        .dd-parent-btn .chevron {
+            font-size: 10px;
+            color: #9ca3af;
+            transition: color .15s, transform .15s;
+            flex-shrink: 0
+        }
+
+        .dd-parent:hover .chevron {
+            color: var(--gold);
+            transform: translateX(2px)
+        }
+
+        .dd-flyout {
+            position: absolute;
+            left: calc(100% + 6px);
+            top: -6px;
+            width: 220px;
+            background: #fff;
+            border: 1px solid #f0ece4;
+            border-radius: 14px;
+            box-shadow: 0 20px 40px -8px rgba(30, 30, 30, .18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(6px);
+            transition: opacity .2s ease, transform .2s ease, visibility .2s;
+            z-index: 300;
+            overflow: hidden
+        }
+
+        .dd-parent:hover .dd-flyout {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0)
+        }
+
+        .dd-flyout-header {
+            padding: 8px 14px;
+            background: #fbf9f2;
+            border-bottom: 1px solid #f5f0db;
+            font-size: 10px;
+            font-weight: 700;
+            color: #b06f2a;
+            letter-spacing: .15em;
+            text-transform: uppercase
+        }
+
+        .dd-flyout a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: #4b5563;
+            transition: background .15s, color .15s;
+            border-bottom: 1px solid #f9f5ef;
+            text-decoration: none
+        }
+
+        .dd-flyout a:last-child {
+            border-bottom: none
+        }
+
+        .dd-flyout a:hover {
+            background: #fbf9f2;
+            color: #b06f2a
+        }
+
+        .dd-flyout a i {
+            font-size: 11px;
+            color: #d1a450;
+            width: 14px;
+            text-align: center;
+            flex-shrink: 0
+        }
+
+        .dd-flyout.scrollable {
+            max-height: 320px;
+            overflow-y: auto
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold-200">
+    <div class="announcement text-center py-2.5 px-4 text-xs font-medium tracking-widest text-gold-300 uppercase"><i
+            class="fa-solid fa-file-contract mr-2 text-gold-500"></i> Pre-Need Plan â€” Protect Your Family's Future
+        &nbsp;Â·&nbsp; Call (034) 123-4567</div>
+    <nav class="sticky top-0 w-full glass-nav z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../Teresa_Sample 1.html" class="flex items-center gap-3 group"><i
+                    class="fa-solid fa-dove text-3xl text-gold-500 group-hover:text-gold-600 transition"></i>
+                <div class="leading-tight"><span
+                        class="block text-xl font-serif font-bold tracking-tight text-charcoal">Teresa
+                        Development</span><span
+                        class="block text-[10px] font-medium text-gold-600 tracking-[0.2em] uppercase">Corporation</span>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="../Teresa_Sample 1.html" class="text-charcoal hover:text-gold-600 transition">HOME</a>
+                <div class="nav-mega-wrapper"><button
+                        class="text-charcoal hover:text-gold-600 transition flex items-center gap-1.5 py-4">PRODUCTS
+                        &amp; SERVICES <i class="fa-solid fa-caret-down text-xs ml-1"></i></button>
+                    <div id="productsDropdown">
+                        <div class="dd-parent"><button class="dd-parent-btn"><span class="dd-label"><i
+                                        class="fa-solid fa-tree text-gold-400"></i>Acropolis Garden</span><i
+                                    class="fa-solid fa-chevron-right chevron"></i></button>
+                            <div class="dd-flyout">
+                                <div class="dd-flyout-header">Acropolis Garden</div><a
+                                    href="../Acropolis_Garden/Pre-Need Plan.html"><i
+                                        class="fa-solid fa-file-contract"></i>Pre-Need Plan</a><a
+                                    href="../Acropolis_Garden/Cremation_Plan.html"><i
+                                        class="fa-solid fa-fire"></i>Cremation Plan</a>
+                            </div>
+                        </div>
+                        <div class="dd-parent"><button class="dd-parent-btn"><span class="dd-label"><i
+                                        class="fa-solid fa-church text-gold-400"></i>Christ The Redeemer</span><i
+                                    class="fa-solid fa-chevron-right chevron"></i></button>
+                            <div class="dd-flyout">
+                                <div class="dd-flyout-header">Christ The Redeemer</div><a
+                                    href="../Christ_Redeemer/Columbarium_Basic.html"><i
+                                        class="fa-solid fa-vault"></i>Columbarium Basic</a><a
+                                    href="../Christ_Redeemer/Columbarium_Premium.html"><i
+                                        class="fa-solid fa-star"></i>Premium Vault</a><a
+                                    href="../Christ_Redeemer/Family_Suite.html"><i
+                                        class="fa-solid fa-house-heart"></i>Family Suite</a>
+                            </div>
+                        </div>
+                        <div class="dd-parent"><button class="dd-parent-btn"><span class="dd-label"><i
+                                        class="fa-solid fa-seedling text-gold-400"></i>Rose Lawn Memorial</span><i
+                                    class="fa-solid fa-chevron-right chevron"></i></button>
+                            <div class="dd-flyout scrollable">
+                                <div class="dd-flyout-header">Rose Lawn Memorial</div><a
+                                    href="../Raws Lawn Lot/Lawn_Lot.html"><i class="fa-solid fa-square"></i>Lawn
+                                    Lot</a><a href="../Raws Lawn Lot/Court_Lot.html"><i
+                                        class="fa-solid fa-border-all"></i>Court Lot</a><a
+                                    href="../Raws Lawn Lot/Garden_Lot.html"><i class="fa-solid fa-leaf"></i>Garden
+                                    Lot</a><a href="../Raws Lawn Lot/Terrace_Lot.html"><i
+                                        class="fa-solid fa-layer-group"></i>Terrace Lot</a><a
+                                    href="../Raws Lawn Lot/Family_Lot.html"><i
+                                        class="fa-solid fa-people-roof"></i>Family Lot</a><a
+                                    href="../Raws Lawn Lot/Chateau_Lot.html"><i class="fa-solid fa-landmark"></i>Chateau
+                                    Lot</a><a href="../Raws Lawn Lot/Mansion.html"><i
+                                        class="fa-solid fa-building-columns"></i>Mansion Lot</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="../Teresa_Sample 1.html#about" class="text-charcoal hover:text-gold-600 transition">ABOUT</a>
+                <a href="../Teresa_Sample 1.html#contact"
+                    class="text-charcoal hover:text-gold-600 transition">CONTACT</a>
+                <button onclick="openModal()"
+                    class="bg-gold-500 hover:bg-gold-600 text-white px-7 py-2.5 rounded-full transition transform hover:-translate-y-0.5 shadow-lg shadow-gold-500/30 flex items-center gap-2 text-sm"><i
+                        class="fa-solid fa-credit-card"></i> INQUIRE NOW</button>
+            </div>
+            <button class="md:hidden text-2xl text-charcoal"
+                onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"><i
+                    class="fa-solid fa-bars"></i></button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl z-40">
+            <div class="px-6 py-4 space-y-1 text-sm font-medium"><a href="../Teresa_Sample 1.html"
+                    class="block py-3 text-charcoal border-b border-gray-50">HOME</a><a href="../Acropolis.html"
+                    class="block py-3 text-charcoal border-b border-gray-50">Acropolis Garden</a><a
+                    href="../Teresa_Sample 1.html#contact" class="block py-3 text-charcoal">CONTACT</a></div>
+        </div>
+    </nav>
+    <div class="bg-mist border-b border-gray-200 py-3 px-6">
+        <div class="max-w-7xl mx-auto flex items-center gap-2 text-xs text-gray-500 flex-wrap"><a
+                href="../Teresa_Sample 1.html" class="hover:text-gold-600 transition">Home</a><i
+                class="fa-solid fa-chevron-right text-[9px]"></i><a href="../Acropolis.html"
+                class="hover:text-gold-600 transition">Acropolis Garden</a><i
+                class="fa-solid fa-chevron-right text-[9px]"></i><span class="text-charcoal font-semibold">Pre-Need
+                Plan</span></div>
+    </div>
+    <section
+        style="background:linear-gradient(160deg,rgba(5,20,5,.78) 0%,rgba(5,20,5,.92) 100%),url('https://images.unsplash.com/photo-1585543805890-6051f7829f98?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat fixed"
+        class="relative min-h-[70vh] flex items-center">
+        <div class="max-w-7xl mx-auto px-6 z-10 w-full py-24 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div
+                    class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-4">
+                    <i class="fa-solid fa-file-contract text-gold-400 text-xs"></i><span
+                        class="text-gold-300 tracking-[0.2em] text-xs font-medium uppercase">Pre-Need Plan</span></div>
+                <h1 class="text-4xl md:text-6xl font-serif font-bold mb-5 text-white leading-tight">Plan Today.<br><em
+                        class="gold-gradient not-italic">Protect Tomorrow.</em></h1>
+                <p class="text-gray-300 font-light text-lg mb-8 leading-relaxed">A pre-need memorial plan allows you to
+                    arrange and pay for your future memorial services at today's prices â€” giving your family the
+                    ultimate gift of peace and preparedness.</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button onclick="openModal()"
+                        class="bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-xl shadow-gold-500/30 flex items-center justify-center gap-2"><i
+                            class="fa-solid fa-file-signature"></i> Get a Free Quote</button>
+                    <button onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})"
+                        class="border border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold transition flex items-center justify-center gap-2"><i
+                            class="fa-solid fa-list"></i> View Inclusions</button>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
+                    <div class="text-gold-300 text-xs font-bold tracking-widest uppercase mb-4">Plan Highlights</div>
+                    <ul class="space-y-3 text-white text-sm">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-400"></i>Fixed
+                            pricing at today's rates</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-400"></i>Full
+                            funeral &amp; interment services</li>
+                        <li class="flex items-center gap-3"><i
+                                class="fa-solid fa-circle-check text-gold-400"></i>Transferable to family members</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-400"></i>Up to
+                            60 months installment</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-400"></i>SEC
+                            &amp; IPAF regulated</li>
+                        <li class="flex items-center gap-3"><i
+                                class="fa-solid fa-circle-check text-gold-400"></i>Perpetual care included</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="bg-charcoal py-8">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div class="py-3">
+                <div class="text-2xl font-serif font-bold text-gold-400 mb-1">0%</div>
+                <div class="text-gray-400 text-xs tracking-widest uppercase">Interest Rate</div>
+            </div>
+            <div class="py-3">
+                <div class="text-2xl font-serif font-bold text-gold-400 mb-1">60</div>
+                <div class="text-gray-400 text-xs tracking-widest uppercase">Max Months</div>
+            </div>
+            <div class="py-3">
+                <div class="text-2xl font-serif font-bold text-gold-400 mb-1">100%</div>
+                <div class="text-gray-400 text-xs tracking-widest uppercase">Services Covered</div>
+            </div>
+            <div class="py-3">
+                <div class="text-2xl font-serif font-bold text-gold-400 mb-1">SEC</div>
+                <div class="text-gray-400 text-xs tracking-widest uppercase">Regulated &amp; Secure</div>
+            </div>
+        </div>
+    </div>
+    <section id="features" class="py-24 bg-mist">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-14 reveal"><span
+                    class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase bg-gold-100 px-4 py-1.5 rounded-full">What's
+                    Included</span>
+                <h2 class="text-4xl font-serif font-bold mt-5 mb-4 text-charcoal">Pre-Need Plan Inclusions</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 reveal">
+                <div
+                    class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all hover:border-gold-200">
+                    <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i
+                            class="fa-solid fa-coffin text-gold-500 text-xl"></i></div>
+                    <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Funeral Services</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Complete funeral arrangements including
+                        wake facilities, embalming, casket, and processional vehicle.</p>
+                </div>
+                <div
+                    class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all hover:border-gold-200">
+                    <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i
+                            class="fa-solid fa-cross text-gold-500 text-xl"></i></div>
+                    <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Interment or Cremation</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Your choice of interment at Rose Lawn
+                        Memorial Park or cremation with columbarium niche at Christ The Redeemer.</p>
+                </div>
+                <div
+                    class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all hover:border-gold-200">
+                    <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i
+                            class="fa-solid fa-lock text-gold-500 text-xl"></i></div>
+                    <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Price Lock Guarantee</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Your plan price is fixed at enrollment
+                        â€” no inflation adjustments, no surprise charges, ever.</p>
+                </div>
+                <div
+                    class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all hover:border-gold-200">
+                    <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i
+                            class="fa-solid fa-rotate text-gold-500 text-xl"></i></div>
+                    <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Transferable Plan</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Your pre-need plan can be transferred to
+                        any family member â€” making it a truly flexible and thoughtful gift.</p>
+                </div>
+                <div
+                    class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all hover:border-gold-200">
+                    <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i
+                            class="fa-solid fa-shield-check text-gold-500 text-xl"></i></div>
+                    <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Regulated &amp; Secure</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Fully registered with SEC and managed
+                        under IPAF trust fund rules â€” your money is protected and assured.</p>
+                </div>
+                <div
+                    class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all hover:border-gold-200">
+                    <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i
+                            class="fa-solid fa-hand-holding-heart text-gold-500 text-xl"></i></div>
+                    <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Bereavement Support</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Professional grief counselors available
+                        to your family at no extra charge throughout the arrangement process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-charcoal text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5"
+            style="background-image:radial-gradient(circle at 20% 50%,#c58b34 0%,transparent 50%),radial-gradient(circle at 80% 50%,#c58b34 0%,transparent 50%);">
+        </div>
+        <div class="relative max-w-3xl mx-auto px-6 reveal"><i
+                class="fa-solid fa-file-contract text-gold-400 text-4xl mb-6"></i>
+            <h2 class="text-4xl font-serif font-bold mb-4">Begin Your Pre-Need Journey</h2>
+            <p class="text-gray-400 font-light text-lg mb-10">Speak with our specialists for a free, personalized quote.
+                No obligations.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="tel:034-123-4567"
+                    class="bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-xl shadow-gold-500/30 flex items-center justify-center gap-2"><i
+                        class="fa-solid fa-phone"></i> Call (034) 123-4567</a><button onclick="openModal()"
+                    class="border border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold transition flex items-center justify-center gap-2"><i
+                        class="fa-solid fa-envelope"></i> Get Free Quote</button></div>
+        </div>
+    </section>
+    <footer class="bg-[#161616] text-white pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-8 mb-10">
+            <div>
+                <div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-dove text-3xl text-gold-500"></i>
+                    <div><span class="block text-xl font-serif font-bold text-white">Teresa Development</span><span
+                            class="block text-[10px] font-medium text-gold-500 tracking-[0.2em] uppercase">Corporation</span>
+                    </div>
+                </div>
+                <p class="text-gray-500 text-sm font-light max-w-xs">World-class memorial care in Negros Occidental for
+                    over 30 years.</p>
+            </div>
+            <div>
+                <h4 class="font-serif font-bold text-base mb-4 text-white">Contact</h4>
+                <ul class="space-y-2 text-gray-500 text-sm font-light">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-gold-500"></i>(034) 123-4567
+                    </li>
+                    <li class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-gold-500"></i>+63 917 123
+                        4567</li>
+                    <li class="flex items-center gap-2"><i
+                            class="fa-solid fa-envelope text-gold-500"></i>inquiry@bacolodeternal.com</li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-6 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-xs text-gray-600">
+            <span>Â© 2026 Acropolis Garden Â· Teresa Development Corporation. All rights reserved.</span><a
+                href="../Teresa_Sample 1.html"
+                class="text-gold-600 hover:text-gold-400 transition flex items-center gap-1.5"><i
+                    class="fa-solid fa-home text-[10px]"></i> Back to Main Site</a></div>
+    </footer>
+    <div id="modal" class="fixed inset-0 z-[100] modal flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-charcoal/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative w-full max-w-md modal-content bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div class="px-8 py-6 bg-cream border-b border-gray-100 flex justify-between items-center">
+                <div><span class="text-gold-600 text-[10px] font-bold tracking-[0.2em] uppercase">Inquiry</span>
+                    <h3 class="text-2xl font-serif font-bold text-charcoal mt-1">Pre-Need Plan Â· Free Quote</h3>
+                </div><button onclick="closeModal()"
+                    class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 flex items-center justify-center transition"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-8 space-y-4">
+                <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Your
+                        Name</label><input type="text" placeholder="Juan Dela Cruz"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold-400 transition">
+                </div>
+                <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Phone
+                        Number</label><input type="tel" placeholder="+63 9XX XXX XXXX"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold-400 transition">
+                </div>
+                <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Email
+                        Address</label><input type="email" placeholder="your@email.com"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold-400 transition">
+                </div>
+                <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Message
+                        (Optional)</label><textarea rows="3" placeholder="Questions or preferred schedule..."
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold-400 transition resize-none"></textarea>
+                </div><button
+                    class="w-full bg-gold-500 hover:bg-gold-600 text-white py-4 rounded-xl font-bold transition shadow-lg shadow-gold-500/20 flex items-center justify-center gap-2"><i
+                        class="fa-solid fa-paper-plane"></i> Submit Inquiry</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.reveal').forEach(r => new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible') }) }, { threshold: .1 }).observe(r));
+        function openModal() { document.getElementById('modal').classList.add('active') }
+        function closeModal() { document.getElementById('modal').classList.remove('active') }
+    </script>
+</body>
+
+</html>

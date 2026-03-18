@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Columbarium Premium Vault — Christ The Redeemer | Teresa Development</title>
+    <meta name="description" content="Columbarium Premium Vault at Christ The Redeemer — rose granite, custom photo frame, 2-urn capacity starting at ₱78,000 with perpetual care.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config={theme:{extend:{fontFamily:{sans:['DM Sans','sans-serif'],serif:['Cormorant Garamond','serif'],mono:['DM Mono','monospace']},colors:{gold:{50:'#fbf9f2',100:'#f5f0db',200:'#eadcae',300:'#ddc27b',400:'#d1a450',500:'#c58b34',600:'#b06f2a',700:'#935326',800:'#794324',900:'#623820'},cream:'#FDFBF7',charcoal:'#1E1E1E',mist:'#F5F3EE'}}}}
+    </script>
+    <style>
+        :root{--gold:#c58b34;--charcoal:#1E1E1E;--cream:#FDFBF7}*{box-sizing:border-box}html{scroll-behavior:smooth}
+        body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal)}
+        .glass-nav{background:rgba(253,251,247,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(197,139,52,.15)}
+        .hero-bg{background:linear-gradient(160deg,rgba(10,10,20,.78) 0%,rgba(10,10,20,.92) 100%),url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat fixed}
+        .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+        .gold-gradient{background:linear-gradient(135deg,#c58b34 0%,#e8c07d 50%,#b06f2a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .announcement{background:linear-gradient(90deg,#1E1E1E 0%,#2C2C2C 100%)}
+        .badge{background:linear-gradient(135deg,#c58b34,#e8b556)}
+        input[type=range]{-webkit-appearance:none;width:100%;height:5px;border-radius:9999px;background:#e5e5e5;outline:none}
+        input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold);cursor:pointer;border:3px solid white;box-shadow:0 2px 8px rgba(197,139,52,.4)}
+        .modal{opacity:0;visibility:hidden;transition:all .3s ease}.modal.active{opacity:1;visibility:visible}
+        .modal-content{transform:scale(.95) translateY(20px);transition:all .3s cubic-bezier(.4,0,.2,1)}.modal.active .modal-content{transform:scale(1) translateY(0)}
+        .nav-mega-wrapper{position:relative}
+        #productsDropdown{position:absolute;left:0;top:calc(100% + 4px);width:240px;background:#fff;border:1px solid #f0ece4;border-radius:14px;box-shadow:0 20px 40px -8px rgba(30,30,30,.18);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease,visibility .25s;z-index:200}
+        .nav-mega-wrapper:hover #productsDropdown,#productsDropdown:hover{opacity:1;visibility:visible;transform:translateY(0)}
+        .dd-parent{position:relative;cursor:pointer}
+        .dd-parent-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:11px 16px;font-size:13px;color:#4b5563;transition:background .15s,color .15s;border:none;background:transparent;text-align:left;gap:8px}
+        .dd-parent:not(:last-child) .dd-parent-btn{border-bottom:1px solid #f9f5ef}
+        .dd-parent-btn:hover,.dd-parent:hover .dd-parent-btn{background:#fbf9f2;color:#b06f2a}
+        .dd-parent-btn .dd-label{display:flex;align-items:center;gap:8px;flex:1}
+        .dd-parent-btn .chevron{font-size:10px;color:#9ca3af;transition:color .15s,transform .15s;flex-shrink:0}
+        .dd-parent:hover .chevron{color:var(--gold);transform:translateX(2px)}
+        .dd-flyout{position:absolute;left:calc(100% + 6px);top:-6px;width:220px;background:#fff;border:1px solid #f0ece4;border-radius:14px;box-shadow:0 20px 40px -8px rgba(30,30,30,.18);opacity:0;visibility:hidden;transform:translateX(6px);transition:opacity .2s ease,transform .2s ease,visibility .2s;z-index:300;overflow:hidden}
+        .dd-parent:hover .dd-flyout{opacity:1;visibility:visible;transform:translateX(0)}
+        .dd-flyout-header{padding:8px 14px;background:#fbf9f2;border-bottom:1px solid #f5f0db;font-size:10px;font-weight:700;color:#b06f2a;letter-spacing:.15em;text-transform:uppercase}
+        .dd-flyout a{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:13px;color:#4b5563;transition:background .15s,color .15s;border-bottom:1px solid #f9f5ef;text-decoration:none}
+        .dd-flyout a:last-child{border-bottom:none}.dd-flyout a:hover{background:#fbf9f2;color:#b06f2a}
+        .dd-flyout a i{font-size:11px;color:#d1a450;width:14px;text-align:center;flex-shrink:0}
+        .dd-flyout.scrollable{max-height:320px;overflow-y:auto}
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-200">
+    <div class="announcement text-center py-2.5 px-4 text-xs font-medium tracking-widest text-gold-300 uppercase">
+        <i class="fa-solid fa-star mr-2 text-gold-500"></i> Premium Vault — Most Chosen Niche &nbsp;·&nbsp; Call (034) 123-4567
+    </div>
+    <nav class="sticky top-0 w-full glass-nav z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="../Teresa_Sample 1.html" class="flex items-center gap-3 group"><i class="fa-solid fa-dove text-3xl text-gold-500 group-hover:text-gold-600 transition"></i><div class="leading-tight"><span class="block text-xl font-serif font-bold tracking-tight text-charcoal">Teresa Development</span><span class="block text-[10px] font-medium text-gold-600 tracking-[0.2em] uppercase">Corporation</span></div></a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="../Teresa_Sample 1.html" class="text-charcoal hover:text-gold-600 transition">HOME</a>
+                <div class="nav-mega-wrapper">
+                    <button class="text-charcoal hover:text-gold-600 transition flex items-center gap-1.5 py-4">PRODUCTS &amp; SERVICES <i class="fa-solid fa-caret-down text-xs ml-1"></i></button>
+                    <div id="productsDropdown">
+                        <div class="dd-parent"><button class="dd-parent-btn"><span class="dd-label"><i class="fa-solid fa-tree text-gold-400"></i>Acropolis Garden</span><i class="fa-solid fa-chevron-right chevron"></i></button><div class="dd-flyout"><div class="dd-flyout-header">Acropolis Garden</div><a href="../Acropolis_Garden/Pre-Need Plan.html"><i class="fa-solid fa-file-contract"></i>Pre-Need Plan</a><a href="../Acropolis_Garden/Cremation_Plan.html"><i class="fa-solid fa-fire"></i>Cremation Plan</a></div></div>
+                        <div class="dd-parent"><button class="dd-parent-btn"><span class="dd-label"><i class="fa-solid fa-church text-gold-400"></i>Christ The Redeemer</span><i class="fa-solid fa-chevron-right chevron"></i></button><div class="dd-flyout"><div class="dd-flyout-header">Christ The Redeemer</div><a href="Columbarium_Basic.html"><i class="fa-solid fa-vault"></i>Columbarium Basic</a><a href="Columbarium_Premium.html"><i class="fa-solid fa-star"></i>Columbarium Premium</a><a href="Family_Suite.html"><i class="fa-solid fa-house-heart"></i>Family Suite</a></div></div>
+                        <div class="dd-parent"><button class="dd-parent-btn"><span class="dd-label"><i class="fa-solid fa-seedling text-gold-400"></i>Rose Lawn Memorial</span><i class="fa-solid fa-chevron-right chevron"></i></button><div class="dd-flyout scrollable"><div class="dd-flyout-header">Rose Lawn Memorial</div><a href="../Raws Lawn Lot/Lawn_Lot.html"><i class="fa-solid fa-square"></i>Lawn Lot</a><a href="../Raws Lawn Lot/Garden_Lot.html"><i class="fa-solid fa-leaf"></i>Garden Lot</a><a href="../Raws Lawn Lot/Family_Lot.html"><i class="fa-solid fa-people-roof"></i>Family Lot</a><a href="../Raws Lawn Lot/Mansion.html"><i class="fa-solid fa-building-columns"></i>Mansion Lot</a></div></div>
+                    </div>
+                </div>
+                <a href="../Teresa_Sample 1.html#about" class="text-charcoal hover:text-gold-600 transition">ABOUT</a>
+                <a href="../Teresa_Sample 1.html#contact" class="text-charcoal hover:text-gold-600 transition">CONTACT</a>
+                <button onclick="openModal()" class="bg-gold-500 hover:bg-gold-600 text-white px-7 py-2.5 rounded-full transition transform hover:-translate-y-0.5 shadow-lg shadow-gold-500/30 flex items-center gap-2 text-sm"><i class="fa-solid fa-credit-card"></i> RESERVE NOW</button>
+            </div>
+            <button class="md:hidden text-2xl text-charcoal" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl z-40"><div class="px-6 py-4 space-y-1 text-sm font-medium"><a href="../Teresa_Sample 1.html" class="block py-3 text-charcoal border-b border-gray-50">HOME</a><a href="../Christ_Redeemer.html" class="block py-3 text-charcoal border-b border-gray-50">CHRIST THE REDEEMER</a><a href="../Teresa_Sample 1.html#contact" class="block py-3 text-charcoal">CONTACT</a></div></div>
+    </nav>
+
+    <div class="bg-mist border-b border-gray-200 py-3 px-6">
+        <div class="max-w-7xl mx-auto flex items-center gap-2 text-xs text-gray-500 flex-wrap">
+            <a href="../Teresa_Sample 1.html" class="hover:text-gold-600 transition">Home</a><i class="fa-solid fa-chevron-right text-[9px]"></i>
+            <a href="../Christ_Redeemer.html" class="hover:text-gold-600 transition">Christ The Redeemer</a><i class="fa-solid fa-chevron-right text-[9px]"></i>
+            <span class="text-charcoal font-semibold">Premium Vault</span>
+        </div>
+    </div>
+
+    <section class="hero-bg relative min-h-[75vh] flex items-center">
+        <div class="max-w-7xl mx-auto px-6 z-10 w-full py-24 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-4">
+                    <span class="badge text-white text-[10px] font-bold px-3 py-0.5 rounded-full">✦ MOST CHOSEN</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-serif font-bold mb-5 text-white leading-tight">Columbarium <br><em class="gold-gradient not-italic">Premium Vault</em></h1>
+                <p class="text-gray-300 font-light text-lg mb-8 leading-relaxed">Our most popular niche — featuring premium rose granite, an embedded custom photo frame, and double capacity for couples or close family members.</p>
+                <div class="flex items-end gap-4 mb-8">
+                    <div><div class="text-gold-400 text-xs font-bold tracking-widest uppercase mb-1">Starting at</div><div class="text-5xl font-serif font-bold text-white">₱78,000</div><div class="text-gray-400 text-sm mt-1">One-time · 2 Urns Capacity</div></div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button onclick="openModal()" class="bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-xl shadow-gold-500/30 flex items-center justify-center gap-2"><i class="fa-solid fa-lock"></i> Reserve This Niche</button>
+                    <button onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})" class="border border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold transition flex items-center justify-center gap-2"><i class="fa-solid fa-list"></i> View Features</button>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
+                    <div class="text-gold-300 text-xs font-bold tracking-widest uppercase mb-4">Premium Inclusions</div>
+                    <ul class="space-y-3 text-white text-sm">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-400"></i>All Basic Vault features included</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-400"></i>Premium rose granite upgrade</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-400"></i>Embedded custom photo frame</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-400"></i>Dual name &amp; date engraving</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-400"></i>Priority visit scheduling</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-400"></i>2 urns capacity</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-400"></i>Perpetual care guarantee</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-charcoal py-8">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div class="py-3"><div class="text-2xl font-serif font-bold text-gold-400 mb-1">2</div><div class="text-gray-400 text-xs tracking-widest uppercase">Urn Capacity</div></div>
+            <div class="py-3"><div class="text-2xl font-serif font-bold text-gold-400 mb-1">Rose Granite</div><div class="text-gray-400 text-xs tracking-widest uppercase">Material Grade</div></div>
+            <div class="py-3"><div class="text-2xl font-serif font-bold text-gold-400 mb-1">Custom</div><div class="text-gray-400 text-xs tracking-widest uppercase">Photo Frame</div></div>
+            <div class="py-3"><div class="text-2xl font-serif font-bold text-gold-400 mb-1">Perpetual</div><div class="text-gray-400 text-xs tracking-widest uppercase">Care Included</div></div>
+        </div>
+    </div>
+
+    <section id="features" class="py-24 bg-mist">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-14 reveal"><span class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase bg-gold-100 px-4 py-1.5 rounded-full">Premium Features</span><h2 class="text-4xl md:text-5xl font-serif font-bold mt-5 mb-4 text-charcoal">Everything Included</h2></div>
+            <div class="grid md:grid-cols-2 gap-6 reveal">
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-gold-200">
+                    <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i class="fa-solid fa-gem text-gold-500 text-xl"></i></div>
+                    <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Rose Granite Upgrade</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Exquisite rose-tinted granite replaces standard marble — a richer, more distinctive appearance with a naturally beautiful grain and lasting durability.</p>
+                </div>
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-gold-200">
+                    <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i class="fa-solid fa-image text-gold-500 text-xl"></i></div>
+                    <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Embedded Photo Frame</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">A custom ceramic or porcelain photo portrait embedded directly into the granite face — preserving your loved one's image for eternity.</p>
+                </div>
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-gold-200">
+                    <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i class="fa-solid fa-users text-gold-500 text-xl"></i></div>
+                    <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Dual Urn Capacity</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Space for two urns — ideal for couples or family members who wish to rest side by side in the same dedicated sacred space.</p>
+                </div>
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-gold-200">
+                    <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i class="fa-solid fa-calendar-check text-gold-500 text-xl"></i></div>
+                    <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Priority Scheduling</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Premium niche holders receive priority scheduling for special day visits, flower arrangements, and memorial events throughout the year.</p>
+                </div>
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-gold-200 md:col-span-2">
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="flex items-start gap-4"><div class="w-10 h-10 rounded-xl bg-gold-50 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-lightbulb text-gold-500"></i></div><div><h5 class="font-bold text-charcoal mb-1 text-sm">LED Backlighting</h5><p class="text-xs text-gray-500 font-light">Warm ambient LED creating a serene eternal glow</p></div></div>
+                        <div class="flex items-start gap-4"><div class="w-10 h-10 rounded-xl bg-gold-50 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-broom text-gold-500"></i></div><div><h5 class="font-bold text-charcoal mb-1 text-sm">Annual Cleaning</h5><p class="text-xs text-gray-500 font-light">Professional deep-clean service included annually</p></div></div>
+                        <div class="flex items-start gap-4"><div class="w-10 h-10 rounded-xl bg-gold-50 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-shield-halved text-gold-500"></i></div><div><h5 class="font-bold text-charcoal mb-1 text-sm">24/7 Security</h5><p class="text-xs text-gray-500 font-light">Round-the-clock monitoring and gated access</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-14 reveal"><span class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase bg-gold-100 px-4 py-1.5 rounded-full">Plan Your Budget</span><h2 class="text-4xl font-serif font-bold mt-5 mb-4 text-charcoal">Payment Estimator</h2></div>
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 reveal"><div class="grid md:grid-cols-2">
+                <div class="p-8 border-r border-gray-100">
+                    <div class="mb-8"><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-4">Payment Term</label><div class="grid grid-cols-2 gap-3"><button onclick="setTerm(12,this)" class="term-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold text-charcoal hover:border-charcoal transition">12 months</button><button onclick="setTerm(24,this)" class="term-btn border-2 border-charcoal bg-charcoal text-white rounded-xl py-3 text-xs font-bold transition">24 months</button><button onclick="setTerm(36,this)" class="term-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold text-charcoal hover:border-charcoal transition">36 months</button><button onclick="setTerm(60,this)" class="term-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold text-charcoal hover:border-charcoal transition">60 months</button></div></div>
+                    <div><div class="flex justify-between items-center mb-3"><label class="text-xs font-bold text-charcoal uppercase tracking-widest">Down Payment</label><span id="dpLabel" class="text-gold-600 font-bold text-sm font-mono">20%</span></div><input type="range" id="dpSlider" min="10" max="50" value="20" step="5" oninput="update()" class="w-full"><div class="flex justify-between text-[10px] text-gray-400 mt-1.5"><span>10%</span><span>30%</span><span>50%</span></div></div>
+                </div>
+                <div class="p-8 bg-charcoal text-white flex flex-col justify-between">
+                    <div><div class="text-gold-400 text-[10px] font-bold tracking-widest uppercase mb-6">Your Estimated Plan</div><div class="mb-6 pb-6 border-b border-white/10"><div class="text-gray-400 text-xs mb-1">Package Price</div><div class="text-4xl font-serif font-bold text-white">₱78,000</div></div><div class="space-y-4 mb-8"><div class="flex justify-between"><span class="text-gray-400 text-sm">Down Payment (<span id="dpPct">20</span>%)</span><span id="dpAmt" class="font-bold font-mono">₱15,600</span></div><div class="flex justify-between"><span class="text-gray-400 text-sm">Remaining Balance</span><span id="balance" class="font-bold font-mono">₱62,400</span></div><div class="flex justify-between pt-4 border-t border-white/10"><span class="text-gray-300 font-semibold">Monthly Installment</span><span id="monthly" class="text-2xl font-serif font-bold text-gold-400">₱2,600</span></div><div class="text-gray-500 text-xs">over <span id="termLabel">24</span> months · Interest-free</div></div></div>
+                    <button onclick="openModal()" class="w-full bg-gold-500 hover:bg-gold-600 text-white py-4 rounded-xl font-bold transition shadow-lg shadow-gold-500/20 flex items-center justify-center gap-2"><i class="fa-solid fa-lock text-sm"></i> Reserve This Niche</button>
+                </div>
+            </div></div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-mist">
+        <div class="max-w-5xl mx-auto px-6 reveal"><div class="grid md:grid-cols-2 gap-6">
+            <a href="Columbarium_Basic.html" class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:border-gold-200 flex gap-5 items-center"><div class="w-14 h-14 rounded-2xl bg-gold-50 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500 transition-all duration-300"><i class="fa-solid fa-vault text-gold-500 text-xl group-hover:text-white transition"></i></div><div><div class="text-gold-600 text-xs font-bold tracking-widest uppercase mb-1">Looking for simpler?</div><h4 class="font-serif font-bold text-charcoal text-lg">Basic Vault</h4><p class="text-sm text-gray-500 font-light">1 urn, marble plaque — from ₱48,000</p></div><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-gold-500 transition ml-auto"></i></a>
+            <a href="Family_Suite.html" class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:border-gold-200 flex gap-5 items-center"><div class="w-14 h-14 rounded-2xl bg-gold-50 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500 transition-all duration-300"><i class="fa-solid fa-house-heart text-gold-500 text-xl group-hover:text-white transition"></i></div><div><div class="text-gold-600 text-xs font-bold tracking-widest uppercase mb-1">Need more space?</div><h4 class="font-serif font-bold text-charcoal text-lg">Family Suite</h4><p class="text-sm text-gray-500 font-light">4 urns, private vestibule — from ₱145,000</p></div><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-gold-500 transition ml-auto"></i></a>
+        </div></div>
+    </section>
+
+    <section class="py-20 bg-charcoal text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5" style="background-image:radial-gradient(circle at 20% 50%,#c58b34 0%,transparent 50%),radial-gradient(circle at 80% 50%,#c58b34 0%,transparent 50%);"></div>
+        <div class="relative max-w-3xl mx-auto px-6 reveal"><i class="fa-solid fa-dove text-gold-400 text-4xl mb-6"></i><h2 class="text-4xl font-serif font-bold mb-4">Reserve Your Premium Vault Today</h2><p class="text-gray-400 font-light text-lg mb-10">Our team is ready to assist with compassion and care.</p><div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="tel:034-123-4567" class="bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-xl shadow-gold-500/30 flex items-center justify-center gap-2"><i class="fa-solid fa-phone"></i> Call (034) 123-4567</a><button onclick="openModal()" class="border border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold transition flex items-center justify-center gap-2"><i class="fa-solid fa-lock"></i> Reserve Online</button></div></div>
+    </section>
+
+    <footer class="bg-[#161616] text-white pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-8 mb-10">
+            <div><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-dove text-3xl text-gold-500"></i><div><span class="block text-xl font-serif font-bold text-white">Teresa Development</span><span class="block text-[10px] font-medium text-gold-500 tracking-[0.2em] uppercase">Corporation</span></div></div><p class="text-gray-500 text-sm font-light max-w-xs">World-class memorial care in Negros Occidental for over 30 years.</p></div>
+            <div><h4 class="font-serif font-bold text-base mb-4 text-white">Other Niches</h4><ul class="space-y-2 text-gray-500 text-sm font-light"><li><a href="Columbarium_Basic.html" class="hover:text-gold-400 transition">Basic Vault</a></li><li><a href="Columbarium_Premium.html" class="text-gold-400 font-medium">Premium Vault</a></li><li><a href="Family_Suite.html" class="hover:text-gold-400 transition">Family Suite</a></li></ul></div>
+            <div><h4 class="font-serif font-bold text-base mb-4 text-white">Contact</h4><ul class="space-y-2 text-gray-500 text-sm font-light"><li class="flex items-center gap-2"><i class="fa-solid fa-phone text-gold-500"></i>(034) 123-4567</li><li class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-gold-500"></i>+63 917 123 4567</li><li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-gold-500"></i>inquiry@bacolodeternal.com</li></ul></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-xs text-gray-600"><span>© 2026 Christ The Redeemer · Teresa Development Corporation. All rights reserved.</span><a href="../Teresa_Sample 1.html" class="text-gold-600 hover:text-gold-400 transition flex items-center gap-1.5"><i class="fa-solid fa-home text-[10px]"></i> Back to Main Site</a></div>
+    </footer>
+
+    <div id="modal" class="fixed inset-0 z-[100] modal flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-charcoal/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative w-full max-w-md modal-content bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div class="px-8 py-6 bg-cream border-b border-gray-100 flex justify-between items-center"><div><span class="text-gold-600 text-[10px] font-bold tracking-[0.2em] uppercase">Reserve</span><h3 class="text-2xl font-serif font-bold text-charcoal mt-1">Premium Vault · ₱78,000</h3></div><button onclick="closeModal()" class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 flex items-center justify-center transition"><i class="fa-solid fa-xmark"></i></button></div>
+            <div class="p-8 space-y-4">
+                <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Your Name</label><input type="text" placeholder="Juan Dela Cruz" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold-400 transition"></div>
+                <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Phone Number</label><input type="tel" placeholder="+63 9XX XXX XXXX" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold-400 transition"></div>
+                <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Email Address</label><input type="email" placeholder="your@email.com" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold-400 transition"></div>
+                <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Message (Optional)</label><textarea rows="3" placeholder="Questions or preferred visit schedule..." class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold-400 transition resize-none"></textarea></div>
+                <button class="w-full bg-gold-500 hover:bg-gold-600 text-white py-4 rounded-xl font-bold transition shadow-lg shadow-gold-500/20 flex items-center justify-center gap-2"><i class="fa-solid fa-paper-plane"></i> Submit Reservation Request</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let term=24;
+        document.querySelectorAll('.reveal').forEach(r=>new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.1}).observe(r));
+        function setTerm(t,btn){term=t;document.querySelectorAll('.term-btn').forEach(b=>{b.className='term-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold text-charcoal hover:border-charcoal transition'});btn.className='term-btn border-2 border-charcoal bg-charcoal text-white rounded-xl py-3 text-xs font-bold transition';update()}
+        function update(){const dp=parseInt(document.getElementById('dpSlider').value),total=78000,dpAmt=Math.round(total*dp/100),bal=total-dpAmt,monthly=Math.round(bal/term);document.getElementById('dpLabel').textContent=dp+'%';document.getElementById('dpPct').textContent=dp;document.getElementById('dpAmt').textContent='₱'+dpAmt.toLocaleString();document.getElementById('balance').textContent='₱'+bal.toLocaleString();document.getElementById('monthly').textContent='₱'+monthly.toLocaleString();document.getElementById('termLabel').textContent=term}
+        function openModal(){document.getElementById('modal').classList.add('active')}
+        function closeModal(){document.getElementById('modal').classList.remove('active')}
+        update();
+    </script>
+</body>
+</html>

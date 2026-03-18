@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terrace Lot -- Rose Lawn Memorial Park | Teresa Development</title>
+    <meta name="description" content="The Terrace Lot is set on elevated ground, offering panoramic views of Rose Lawn Memorial Park's beautifully maintained landscape - a prestigious location that speaks of elevated status and enduring legacy.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>tailwind.config={theme:{extend:{fontFamily:{sans:['DM Sans','sans-serif'],serif:['Cormorant Garamond','serif'],mono:['DM Mono','monospace']},colors:{gold:{50:'#fbf9f2',100:'#f5f0db',200:'#eadcae',300:'#ddc27b',400:'#d1a450',500:'#c58b34',600:'#b06f2a',700:'#935326',800:'#794324',900:'#623820'},cream:'#FDFBF7',charcoal:'#1E1E1E',mist:'#F5F3EE'}}}}}</script>
+    <style>
+:root{--gold:#c58b34;--charcoal:#1E1E1E;--cream:#FDFBF7}*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal)}
+.glass-nav{background:rgba(253,251,247,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(197,139,52,.15)}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+.gold-gradient{background:linear-gradient(135deg,#c58b34 0%,#e8c07d 50%,#b06f2a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.announcement{background:linear-gradient(90deg,#1E1E1E 0%,#2C2C2C 100%)}
+input[type=range]{-webkit-appearance:none;width:100%;height:5px;border-radius:9999px;background:#e5e5e5;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold);cursor:pointer;border:3px solid white}
+.modal{opacity:0;visibility:hidden;transition:all .3s ease}.modal.active{opacity:1;visibility:visible}
+.modal-content{transform:scale(.95) translateY(20px);transition:all .3s cubic-bezier(.4,0,.2,1)}.modal.active .modal-content{transform:scale(1) translateY(0)}
+.nav-mega-wrapper{position:relative}
+#productsDropdown{position:absolute;left:0;top:calc(100% + 4px);width:240px;background:#fff;border:1px solid #f0ece4;border-radius:14px;box-shadow:0 20px 40px -8px rgba(30,30,30,.18);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease,visibility .25s;z-index:200}
+.nav-mega-wrapper:hover #productsDropdown,#productsDropdown:hover{opacity:1;visibility:visible;transform:translateY(0)}
+.dd-parent{position:relative;cursor:pointer}.dd-parent-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:11px 16px;font-size:13px;color:#4b5563;transition:background .15s,color .15s;border:none;background:transparent;text-align:left;gap:8px}
+.dd-parent:not(:last-child) .dd-parent-btn{border-bottom:1px solid #f9f5ef}.dd-parent-btn:hover,.dd-parent:hover .dd-parent-btn{background:#fbf9f2;color:#b06f2a}
+.dd-parent-btn .dd-label{display:flex;align-items:center;gap:8px;flex:1}.dd-parent-btn .chevron{font-size:10px;color:#9ca3af;transition:color .15s,transform .15s;flex-shrink:0}.dd-parent:hover .chevron{color:var(--gold);transform:translateX(2px)}
+.dd-flyout{position:absolute;left:calc(100% + 6px);top:-6px;width:220px;background:#fff;border:1px solid #f0ece4;border-radius:14px;box-shadow:0 20px 40px -8px rgba(30,30,30,.18);opacity:0;visibility:hidden;transform:translateX(6px);transition:opacity .2s ease,transform .2s ease,visibility .2s;z-index:300;overflow:hidden}
+.dd-parent:hover .dd-flyout{opacity:1;visibility:visible;transform:translateX(0)}.dd-flyout-header{padding:8px 14px;background:#fbf9f2;border-bottom:1px solid #f5f0db;font-size:10px;font-weight:700;color:#b06f2a;letter-spacing:.15em;text-transform:uppercase}
+.dd-flyout a{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:13px;color:#4b5563;transition:background .15s,color .15s;border-bottom:1px solid #f9f5ef;text-decoration:none}.dd-flyout a:last-child{border-bottom:none}.dd-flyout a:hover{background:#fbf9f2;color:#b06f2a}
+.dd-flyout a i{font-size:11px;color:#d1a450;width:14px;text-align:center;flex-shrink:0}.dd-flyout.scrollable{max-height:320px;overflow-y:auto}
+        .hero-bg{background:linear-gradient(160deg,rgba(5,20,5,.78) 0%,rgba(5,20,5,.9) 100%),url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat fixed}
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-200">
+
+<div class="announcement text-center py-2.5 px-4 text-xs font-medium tracking-widest text-gold-300 uppercase">
+    <i class="fa-solid fa-layer-group mr-2 text-gold-500"></i> Terrace Lot -- Rose Lawn Memorial Park &nbsp;&middot;&nbsp; Call (034) 123-4567
+</div>
+
+<nav class="sticky top-0 w-full glass-nav z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="../Teresa_Sample.html" class="flex items-center gap-3 group">
+            <i class="fa-solid fa-dove text-3xl text-gold-500 group-hover:text-gold-600 transition"></i>
+            <div class="leading-tight">
+                <span class="block text-xl font-serif font-bold tracking-tight text-charcoal">Teresa Development</span>
+                <span class="block text-[10px] font-medium text-gold-600 tracking-[0.2em] uppercase">Corporation</span>
+            </div>
+        </a>
+        <div class="hidden md:flex items-center gap-7 text-sm font-medium tracking-wide">
+            <a href="../Teresa_Sample.html" class="text-charcoal hover:text-gold-600 transition">HOME</a>
+            <div class="nav-mega-wrapper">
+                <button class="text-charcoal hover:text-gold-600 transition flex items-center gap-1.5 py-4">PRODUCTS &amp; SERVICES <i class="fa-solid fa-caret-down text-xs ml-1"></i></button>
+                <div id="productsDropdown">
+                    <div class="dd-parent">
+                        <button class="dd-parent-btn"><span class="dd-label"><i class="fa-solid fa-tree text-gold-400"></i>Acropolis Garden</span><i class="fa-solid fa-chevron-right chevron"></i></button>
+                        <div class="dd-flyout">
+                            <div class="dd-flyout-header">Acropolis Garden</div>
+                            <a href="../Acropolis.html"><i class="fa-solid fa-tree"></i>Overview</a>
+                            <a href="../Acropolis_Garden/Pre-Need Plan.html"><i class="fa-solid fa-file-contract"></i>Pre-Need Plan</a>
+                            <a href="../Acropolis_Garden/Cremation_Plan.html"><i class="fa-solid fa-fire"></i>Cremation Plan</a>
+                        </div>
+                    </div>
+                    <div class="dd-parent">
+                        <button class="dd-parent-btn"><span class="dd-label"><i class="fa-solid fa-church text-gold-400"></i>Christ The Redeemer</span><i class="fa-solid fa-chevron-right chevron"></i></button>
+                        <div class="dd-flyout">
+                            <div class="dd-flyout-header">Christ The Redeemer</div>
+                            <a href="../Christ_Redeemer.html"><i class="fa-solid fa-church"></i>Overview</a>
+                            <a href="../Christ_Redeemer/Columbarium_Basic.html"><i class="fa-solid fa-vault"></i>Basic Vault</a>
+                            <a href="../Christ_Redeemer/Columbarium_Premium.html"><i class="fa-solid fa-star"></i>Premium Vault</a>
+                            <a href="../Christ_Redeemer/Family_Suite.html"><i class="fa-solid fa-house-heart"></i>Family Suite</a>
+                        </div>
+                    </div>
+                    <div class="dd-parent">
+                        <button class="dd-parent-btn"><span class="dd-label"><i class="fa-solid fa-seedling text-gold-400"></i>Rose Lawn Memorial Park</span><i class="fa-solid fa-chevron-right chevron"></i></button>
+                        <div class="dd-flyout scrollable">
+                            <div class="dd-flyout-header">Rose Lawn Memorial Park</div>
+                            <a href="../Raws_Lawn.html"><i class="fa-solid fa-seedling"></i>Overview</a>
+                            <a href="Lawn_Lot.html"><i class="fa-solid fa-square"></i>Lawn Lot</a>
+                            <a href="Court_Lot.html"><i class="fa-solid fa-border-all"></i>Court Lot</a>
+                            <a href="Garden_Lot.html"><i class="fa-solid fa-leaf"></i>Garden Lot</a>
+                            <a href="Terrace_Lot.html"><i class="fa-solid fa-layer-group"></i>Terrace Lot</a>
+                            <a href="Family_Lot.html"><i class="fa-solid fa-people-roof"></i>Family Lot</a>
+                            <a href="Chateau_Lot.html"><i class="fa-solid fa-landmark"></i>Chateau Lot</a>
+                            <a href="Mansion.html"><i class="fa-solid fa-building-columns"></i>Mansion Lot</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="../Teresa_Sample.html#about" class="text-charcoal hover:text-gold-600 transition">ABOUT</a>
+            <a href="../Teresa_Sample.html#contact" class="text-charcoal hover:text-gold-600 transition">CONTACT</a>
+            <button onclick="openModal()" class="bg-gold-500 hover:bg-gold-600 text-white px-6 py-2.5 rounded-full transition transform hover:-translate-y-0.5 shadow-lg shadow-gold-500/30 flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-credit-card"></i> INQUIRE NOW
+            </button>
+        </div>
+        <button class="md:hidden text-2xl text-charcoal" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"><i class="fa-solid fa-bars"></i></button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl z-40">
+        <div class="px-6 py-4 space-y-1 text-sm font-medium">
+            <a href="../Teresa_Sample.html" class="block py-3 text-charcoal border-b border-gray-50">HOME</a>
+            <a href="../Acropolis.html" class="block py-3 text-charcoal border-b border-gray-50">ACROPOLIS GARDEN</a>
+            <a href="../Christ_Redeemer.html" class="block py-3 text-charcoal border-b border-gray-50">CHRIST THE REDEEMER</a>
+            <a href="../Raws_Lawn.html" class="block py-3 text-charcoal border-b border-gray-50">ROSE LAWN MEMORIAL</a>
+            <a href="../Teresa_Sample.html#about" class="block py-3 text-charcoal border-b border-gray-50">ABOUT</a>
+            <a href="../Teresa_Sample.html#contact" class="block py-3 text-charcoal">CONTACT</a>
+        </div>
+    </div>
+</nav>
+
+<div class="bg-mist border-b border-gray-200 py-3 px-6">
+    <div class="max-w-7xl mx-auto flex items-center gap-2 text-xs text-gray-500 flex-wrap">
+        <a href="../Teresa_Sample.html" class="hover:text-gold-600 transition">Home</a>
+        <i class="fa-solid fa-chevron-right text-[9px]"></i>
+        <a href="../Raws_Lawn.html" class="hover:text-gold-600 transition">Rose Lawn Memorial Park</a>
+        <i class="fa-solid fa-chevron-right text-[9px]"></i>
+        <span class="text-charcoal font-semibold">Terrace Lot</span>
+    </div>
+</div>
+
+<section class="hero-bg relative min-h-[75vh] flex items-center">
+    <div class="max-w-7xl mx-auto px-6 z-10 w-full py-24 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-5">
+                <i class="fa-solid fa-layer-group text-gold-400 text-xs"></i>
+                <span class="text-gold-300 tracking-[0.2em] text-xs font-medium uppercase">Terrace Lot</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold mb-3 text-white leading-tight">Terrace Lot</h1>
+            <p class="text-gold-300 font-serif italic text-xl mb-5">Elevated views, elevated honor.</p>
+            <p class="text-gray-300 font-light text-base mb-8 leading-relaxed max-w-lg">The Terrace Lot is set on elevated ground, offering panoramic views of Rose Lawn Memorial Park's beautifully maintained landscape - a prestigious location that speaks of elevated status and enduring legacy.</p>
+            <div class="mb-8">
+                <div class="text-gold-400 text-xs font-bold tracking-widest uppercase mb-1">Starting Price</div>
+                <div class="text-5xl font-serif font-bold text-white">&#8369;165,000</div>
+                <div class="text-gray-400 text-sm mt-1">1.5 sqm - 2 interments &bull; Perpetual Care Included</div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="openModal()" class="bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-xl shadow-gold-500/30 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-lock"></i> Reserve This Lot
+                </button>
+                <button onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})" class="border border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-list"></i> View Features
+                </button>
+            </div>
+        </div>
+        <div class="hidden md:block">
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
+                <div class="text-gold-300 text-xs font-bold tracking-widest uppercase mb-5">Lot Highlights</div>
+                <ul class="space-y-3 text-white text-sm">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-500 text-xs flex-shrink-0"></i><span>Elevated terrace location</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-500 text-xs flex-shrink-0"></i><span>Panoramic park views</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-500 text-xs flex-shrink-0"></i><span>2-interment capacity</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-500 text-xs flex-shrink-0"></i><span>Premium granite marker</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-500 text-xs flex-shrink-0"></i><span>Enhanced privacy setting</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-gold-500 text-xs flex-shrink-0"></i><span>Perpetual maintenance included</span></li>
+                </ul>
+                <div class="mt-6 pt-6 border-t border-white/15 flex justify-between items-center">
+                    <div><div class="text-xs text-gray-400 mb-1">Lot Size</div><div class="text-white font-bold font-mono text-sm">1.5 sqm - 2 interments</div></div>
+                    <button onclick="openModal()" class="bg-gold-500 hover:bg-gold-600 text-white px-5 py-2.5 rounded-full text-xs font-bold transition">Reserve Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-60">
+        <span class="text-white text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+        <i class="fa-solid fa-chevron-down text-white text-sm"></i>
+    </div>
+</section>
+
+<section id="features" class="py-24 bg-mist">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-14 reveal">
+            <span class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase bg-gold-100 px-4 py-1.5 rounded-full">What's Included</span>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold mt-5 mb-4 text-charcoal">Terrace Lot Features</h2>
+            <div class="w-20 h-0.5 bg-gold-400 mx-auto mb-5"></div>
+            <p class="text-gray-500 font-light max-w-md mx-auto">Everything to honor your loved one with dignity and lasting beauty.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 reveal">
+            <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-gold-200">
+                <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i class="fa-solid fa-infinity text-gold-500 text-xl"></i></div>
+                <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Perpetual Lot Ownership</h4>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">Full perpetual ownership of the lot -- yours and your family's forever, with no annual dues or renewal requirements.</p>
+            </div>
+            <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-gold-200">
+                <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i class="fa-solid fa-gem text-gold-500 text-xl"></i></div>
+                <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Premium Memorial Marker</h4>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">High-quality granite or marble memorial marker with custom name engraving included in every lot package.</p>
+            </div>
+            <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-gold-200">
+                <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i class="fa-solid fa-broom text-gold-500 text-xl"></i></div>
+                <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Grounds Maintenance</h4>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">Year-round professional lawn care, landscaping, and grounds maintenance -- the park always looks its finest.</p>
+            </div>
+            <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-gold-200">
+                <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i class="fa-solid fa-shield-halved text-gold-500 text-xl"></i></div>
+                <h4 class="font-serif font-bold text-charcoal text-lg mb-2">24/7 Security</h4>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">Round-the-clock on-site security staff and CCTV surveillance -- ensuring the safety and sanctity of the grounds.</p>
+            </div>
+            <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-gold-200">
+                <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i class="fa-solid fa-leaf text-gold-500 text-xl"></i></div>
+                <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Irrigation &amp; Landscaping</h4>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">Automated irrigation keeps the park lush and vibrant -- a beautifully maintained setting for every family visit.</p>
+            </div>
+            <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-gold-200">
+                <div class="w-12 h-12 rounded-xl bg-gold-50 flex items-center justify-center mb-4"><i class="fa-solid fa-calendar-check text-gold-500 text-xl"></i></div>
+                <h4 class="font-serif font-bold text-charcoal text-lg mb-2">Flexible Installment Plan</h4>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">Start with a low down payment and enjoy 0% interest installments over up to 60 months -- no hidden charges ever.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-14 reveal">
+            <span class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase bg-gold-100 px-4 py-1.5 rounded-full">Plan Your Budget</span>
+            <h2 class="text-4xl font-serif font-bold mt-5 mb-4 text-charcoal">Payment Estimator</h2>
+            <p class="text-gray-500 font-light">Slide to see monthly payments at 0% interest.</p>
+        </div>
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 reveal">
+            <div class="grid md:grid-cols-2">
+                <div class="p-8 border-r border-gray-100">
+                    <div class="mb-8">
+                        <label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-4">Payment Term</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="setTerm(12,this)" class="term-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold text-charcoal hover:border-charcoal transition">12 months</button>
+                            <button onclick="setTerm(24,this)" class="term-btn border-2 border-charcoal bg-charcoal text-white rounded-xl py-3 text-xs font-bold transition">24 months</button>
+                            <button onclick="setTerm(36,this)" class="term-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold text-charcoal hover:border-charcoal transition">36 months</button>
+                            <button onclick="setTerm(60,this)" class="term-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold text-charcoal hover:border-charcoal transition">60 months</button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <label class="text-xs font-bold text-charcoal uppercase tracking-widest">Down Payment</label>
+                            <span id="dpLabel" class="text-gold-600 font-bold text-sm font-mono">20%</span>
+                        </div>
+                        <input type="range" id="dpSlider" min="10" max="50" value="20" step="5" oninput="update()" class="w-full">
+                        <div class="flex justify-between text-[10px] text-gray-400 mt-1.5"><span>10%</span><span>30%</span><span>50%</span></div>
+                    </div>
+                </div>
+                <div class="p-8 bg-charcoal text-white flex flex-col justify-between">
+                    <div>
+                        <div class="text-gold-400 text-[10px] font-bold tracking-widest uppercase mb-5">Your Estimated Plan</div>
+                        <div class="mb-5 pb-5 border-b border-white/10">
+                            <div class="text-gray-400 text-xs mb-1">Lot Price</div>
+                            <div class="text-4xl font-serif font-bold text-white">&#8369;165,000</div>
+                            <div class="text-gray-500 text-xs mt-1">Terrace Lot &bull; 1.5 sqm - 2 interments</div>
+                        </div>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between"><span class="text-gray-400 text-sm">Down Payment (<span id="dpPct">20</span>%)</span><span id="dpAmt" class="font-bold font-mono">-</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400 text-sm">Remaining Balance</span><span id="balance" class="font-bold font-mono">-</span></div>
+                            <div class="flex justify-between pt-4 border-t border-white/10">
+                                <span class="text-gray-300 font-semibold">Monthly Payment</span>
+                                <span id="monthly" class="text-2xl font-serif font-bold text-gold-400">-</span>
+                            </div>
+                            <div class="text-gray-500 text-xs">over <span id="termLabel">24</span> months &bull; 0% interest</div>
+                        </div>
+                    </div>
+                    <button onclick="openModal()" class="w-full bg-gold-500 hover:bg-gold-600 text-white py-4 rounded-xl font-bold transition shadow-lg shadow-gold-500/20 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-lock text-sm"></i> Reserve Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-14 bg-mist border-y border-gray-200">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-8 reveal">
+            <span class="text-gold-600 text-xs tracking-[0.25em] font-bold uppercase">Browse Other Lots</span>
+            <h3 class="text-2xl font-serif font-bold mt-2 text-charcoal">Explore All Lot Types</h3>
+        </div>
+        <div class="grid grid-cols-2 gap-4 max-w-2xl mx-auto reveal">
+            <a href="Garden_Lot.html" class="group flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-lg hover:border-gold-200 transition-all duration-300"><i class="fa-solid fa-arrow-left text-gray-300 group-hover:text-gold-500 transition"></i><div><div class="text-[10px] text-gray-400 uppercase tracking-widest mb-0.5">Previous</div><div class="font-serif font-bold text-charcoal">Garden Lot</div></div></a>
+            <a href="Family_Lot.html" class="group flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-lg hover:border-gold-200 transition-all duration-300 justify-end"><div class="text-right"><div class="text-[10px] text-gray-400 uppercase tracking-widest mb-0.5">Next</div><div class="font-serif font-bold text-charcoal">Family Lot</div></div><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-gold-500 transition"></i></a>
+        </div>
+        <div class="text-center mt-8 reveal">
+            <a href="../Raws_Lawn.html" class="inline-flex items-center gap-2 bg-gold-50 hover:bg-gold-100 text-gold-700 font-semibold px-6 py-3 rounded-full border border-gold-200 text-sm transition">
+                <i class="fa-solid fa-seedling text-xs"></i> View All Lots at Rose Lawn Memorial Park
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 bg-charcoal text-white text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image:radial-gradient(circle at 20% 50%,#c58b34 0%,transparent 50%),radial-gradient(circle at 80% 50%,#c58b34 0%,transparent 50%);"></div>
+    <div class="relative max-w-3xl mx-auto px-6 reveal">
+        <i class="fa-solid fa-layer-group text-gold-400 text-4xl mb-6"></i>
+        <h2 class="text-4xl font-serif font-bold mb-4">Reserve Your Terrace Lot Today</h2>
+        <p class="text-gray-400 font-light text-lg mb-10">Secure this sacred space for your family. Call us or send an inquiry to get started right away.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:034-123-4567" class="bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full font-semibold transition shadow-xl shadow-gold-500/30 flex items-center justify-center gap-2"><i class="fa-solid fa-phone"></i> Call (034) 123-4567</a>
+            <button onclick="openModal()" class="border border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold transition flex items-center justify-center gap-2"><i class="fa-solid fa-envelope"></i> Send Inquiry</button>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-[#161616] text-white pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10 mb-12">
+        <div>
+            <div class="flex items-center gap-3 mb-5"><i class="fa-solid fa-dove text-3xl text-gold-500"></i><div><span class="block text-xl font-serif font-bold text-white">Teresa Development</span><span class="block text-[10px] font-medium text-gold-500 tracking-[0.2em] uppercase">Corporation</span></div></div>
+            <p class="text-gray-500 text-sm font-light leading-relaxed">World-class memorial care in Negros Occidental for over 30 years.</p>
+        </div>
+        <div>
+            <h4 class="font-serif font-bold text-sm mb-5 text-white uppercase tracking-wide">Acropolis Garden</h4>
+            <ul class="space-y-2 text-gray-500 text-sm font-light">
+                <li><a href="../Acropolis.html" class="hover:text-gold-400 transition">Overview</a></li>
+                <li><a href="../Acropolis_Garden/Pre-Need Plan.html" class="hover:text-gold-400 transition">Pre-Need Plan</a></li>
+                <li><a href="../Acropolis_Garden/Cremation_Plan.html" class="hover:text-gold-400 transition">Cremation Plan</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-serif font-bold text-sm mb-5 text-white uppercase tracking-wide">Christ The Redeemer</h4>
+            <ul class="space-y-2 text-gray-500 text-sm font-light">
+                <li><a href="../Christ_Redeemer.html" class="hover:text-gold-400 transition">Overview</a></li>
+                <li><a href="../Christ_Redeemer/Columbarium_Basic.html" class="hover:text-gold-400 transition">Basic Vault</a></li>
+                <li><a href="../Christ_Redeemer/Columbarium_Premium.html" class="hover:text-gold-400 transition">Premium Vault</a></li>
+                <li><a href="../Christ_Redeemer/Family_Suite.html" class="hover:text-gold-400 transition">Family Suite</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-serif font-bold text-sm mb-5 text-white uppercase tracking-wide">Rose Lawn Memorial</h4>
+            <ul class="space-y-2 text-gray-500 text-sm font-light">
+                <li><a href="../Raws_Lawn.html" class="hover:text-gold-400 transition">Overview</a></li>
+                <li><a href="Lawn_Lot.html" class="hover:text-gold-400 transition">Lawn Lot</a></li>
+                <li><a href="Court_Lot.html" class="hover:text-gold-400 transition">Court Lot</a></li>
+                <li><a href="Garden_Lot.html" class="hover:text-gold-400 transition">Garden Lot</a></li>
+                <li><a href="Terrace_Lot.html" class="hover:text-gold-400 transition">Terrace Lot</a></li>
+                <li><a href="Family_Lot.html" class="hover:text-gold-400 transition">Family Lot</a></li>
+                <li><a href="Chateau_Lot.html" class="hover:text-gold-400 transition">Chateau Lot</a></li>
+                <li><a href="Mansion.html" class="hover:text-gold-400 transition">Mansion Lot</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
+        <span>&copy; 2026 Rose Lawn Memorial Park &middot; Teresa Development Corporation. All rights reserved.</span>
+        <div class="flex items-center gap-4">
+            <a href="tel:034-123-4567" class="text-gray-500 hover:text-gold-400 transition">(034) 123-4567</a>
+            <a href="../Teresa_Sample.html" class="text-gold-600 hover:text-gold-400 transition flex items-center gap-1.5"><i class="fa-solid fa-home text-[10px]"></i> Main Site</a>
+        </div>
+    </div>
+</footer>
+
+<div id="modal" class="fixed inset-0 z-[100] modal flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-charcoal/80 backdrop-blur-sm" onclick="closeModal()"></div>
+    <div class="relative w-full max-w-md modal-content bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div class="px-8 py-6 bg-[#FDFBF7] border-b border-gray-100 flex justify-between items-center">
+            <div><span class="text-gold-600 text-[10px] font-bold tracking-[0.2em] uppercase">Inquiry Form</span><h3 class="text-2xl font-serif font-bold text-charcoal mt-1">Terrace Lot</h3><p class="text-gold-600 text-sm font-medium">&#8369;165,000</p></div>
+            <button onclick="closeModal()" class="w-9 h-9 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 flex items-center justify-center transition"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="p-8 space-y-4">
+            <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Full Name</label><input type="text" placeholder="Juan Dela Cruz" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/30 focus:border-gold-400 transition"></div>
+            <div class="grid grid-cols-2 gap-3">
+                <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Phone</label><input type="tel" placeholder="+63 9XX XXX XXXX" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/30 focus:border-gold-400 transition"></div>
+                <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Email</label><input type="email" placeholder="your@email.com" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/30 focus:border-gold-400 transition"></div>
+            </div>
+            <div><label class="block text-xs font-bold text-charcoal uppercase tracking-widest mb-2">Message</label><textarea rows="3" placeholder="Questions or preferred visit schedule..." class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/30 focus:border-gold-400 transition resize-none"></textarea></div>
+            <button onclick="handleSubmit()" class="w-full bg-gold-500 hover:bg-gold-600 text-white py-4 rounded-xl font-bold transition shadow-lg shadow-gold-500/20 flex items-center justify-center gap-2"><i class="fa-solid fa-paper-plane"></i> Submit Inquiry</button>
+            <p class="text-center text-[11px] text-gray-400">Or call us: <a href="tel:034-123-4567" class="text-gold-600 font-semibold">(034) 123-4567</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.reveal').forEach(r => {
+        new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); }); }, { threshold: 0.1 }).observe(r);
+    });
+    function openModal() { document.getElementById('modal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { document.getElementById('modal').classList.remove('active'); document.body.style.overflow = ''; }
+    function handleSubmit() {
+        const btn = event.target;
+        btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Submitted! We will contact you shortly.';
+        btn.classList.replace('bg-gold-500','bg-green-600');
+        setTimeout(closeModal, 2500);
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    let term = 24;
+    const price = 165000;
+    function setTerm(t, btn) {
+        term = t;
+        document.querySelectorAll('.term-btn').forEach(b => { b.className = 'term-btn border-2 border-gray-200 rounded-xl py-3 text-xs font-bold text-charcoal hover:border-charcoal transition'; });
+        btn.className = 'term-btn border-2 border-charcoal bg-charcoal text-white rounded-xl py-3 text-xs font-bold transition';
+        update();
+    }
+    function update() {
+        const dp = parseInt(document.getElementById('dpSlider').value);
+        const dpAmt = Math.round(price * dp / 100);
+        const bal = price - dpAmt;
+        const monthly = Math.round(bal / term);
+        document.getElementById('dpLabel').textContent = dp + '%';
+        document.getElementById('dpPct').textContent = dp;
+        document.getElementById('dpAmt').textContent = 'PHP ' + dpAmt.toLocaleString();
+        document.getElementById('balance').textContent = 'PHP ' + bal.toLocaleString();
+        document.getElementById('monthly').textContent = 'PHP ' + monthly.toLocaleString();
+        document.getElementById('termLabel').textContent = term;
+    }
+    update();
+</script>
+</body>
+</html>
