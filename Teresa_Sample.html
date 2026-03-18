@@ -59,7 +59,7 @@
 
         .hero-bg {
             background: linear-gradient(160deg, rgba(20, 20, 20, 0.65) 0%, rgba(20, 20, 20, 0.82) 100%),
-                url('https://scontent.fdvo2-2.fna.fbcdn.net/v/t39.30808-6/573339161_809886624981491_7539312062762622891_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=13d280&_nc_ohc=eIhP6ze_ZLAQ7kNvwHC6ykK&_nc_oc=AdnS40qhX7BXSYYXNxhZWscx6yaTWIaqcsHKE_VcNxK9U5heWR7dcuY1yqcOE7TPtYCT1AzO_ymz2CUDWhfHummO&_nc_zt=23&_nc_ht=scontent.fdvo2-2.fna&_nc_gid=9AjE2kEmDAQR5C2s8yKPKQ&_nc_ss=8&oh=00_Afz4eY6D0XdDkIPzKtimDgGRCMxHemjDJlkUdWp1sR2p6w&oe=69C01AD2') center/cover no-repeat fixed;
+                url('assets/Culombarium.jpg') center/cover no-repeat fixed;
         }
 
         .hero-grain::after {
@@ -214,7 +214,7 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            transition: transform .65s cubic-bezier(.4,0,.2,1);
+            transition: transform .65s cubic-bezier(.4, 0, .2, 1);
             will-change: transform;
         }
 
@@ -229,42 +229,50 @@
             cursor: pointer;
             filter: brightness(.55) saturate(.6);
             transform: scale(.86);
-            box-shadow: 0 6px 24px rgba(30,30,30,.15);
+            box-shadow: 0 6px 24px rgba(30, 30, 30, .15);
             transition:
-                transform .65s cubic-bezier(.4,0,.2,1),
-                filter .65s cubic-bezier(.4,0,.2,1),
-                box-shadow .65s cubic-bezier(.4,0,.2,1);
+                transform .65s cubic-bezier(.4, 0, .2, 1),
+                filter .65s cubic-bezier(.4, 0, .2, 1),
+                box-shadow .65s cubic-bezier(.4, 0, .2, 1);
         }
 
         .g-card.active {
             filter: brightness(1) saturate(1);
             transform: scale(1);
-            box-shadow: 0 28px 70px -12px rgba(30,30,30,.4);
+            box-shadow: 0 28px 70px -12px rgba(30, 30, 30, .4);
         }
 
         .g-card img {
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
             transition: transform .7s ease;
         }
 
-        .g-card.active:hover img { transform: scale(1.04); }
+        .g-card.active:hover img {
+            transform: scale(1.04);
+        }
 
         .g-card::after {
             content: '';
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(20,20,20,.72) 0%, transparent 55%);
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(20, 20, 20, .72) 0%, transparent 55%);
             opacity: 0;
             transition: opacity .4s ease;
             pointer-events: none;
         }
 
-        .g-card.active::after { opacity: 1; }
+        .g-card.active::after {
+            opacity: 1;
+        }
 
         .g-card-caption {
             position: absolute;
-            bottom: 22px; left: 26px; right: 26px;
+            bottom: 22px;
+            left: 26px;
+            right: 26px;
             z-index: 3;
             opacity: 0;
             transform: translateY(10px);
@@ -272,14 +280,17 @@
             pointer-events: none;
         }
 
-        .g-card.active .g-card-caption { opacity: 1; transform: translateY(0); }
+        .g-card.active .g-card-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         .g-card-caption h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
             font-weight: 600;
             color: #fff;
-            text-shadow: 0 2px 12px rgba(0,0,0,.4);
+            text-shadow: 0 2px 12px rgba(0, 0, 0, .4);
             line-height: 1.2;
         }
 
@@ -302,48 +313,71 @@
         }
 
         .g-arr {
-            width: 42px; height: 42px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background: #fff;
             border: 1.5px solid #e8e2d8;
             color: var(--charcoal);
             font-size: 14px;
             cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 12px rgba(30,30,30,.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(30, 30, 30, .08);
             transition: background .2s, border-color .2s, transform .2s;
         }
 
-        .g-arr:hover { background: var(--gold); border-color: var(--gold); color: #fff; transform: scale(1.08); }
+        .g-arr:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #fff;
+            transform: scale(1.08);
+        }
 
-        .g-dots { display: flex; gap: 8px; align-items: center; }
+        .g-dots {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
 
         .g-dot {
-            height: 8px; width: 8px;
+            height: 8px;
+            width: 8px;
             border-radius: 999px;
             background: #cdc6ba;
             cursor: pointer;
-            border: none; padding: 0;
-            transition: background .3s, width .35s cubic-bezier(.4,0,.2,1);
+            border: none;
+            padding: 0;
+            transition: background .3s, width .35s cubic-bezier(.4, 0, .2, 1);
         }
 
-        .g-dot.active { background: var(--gold); width: 26px; }
+        .g-dot.active {
+            background: var(--gold);
+            width: 26px;
+        }
 
         /* timer ring */
         .g-timer-wrap {
             position: relative;
-            width: 42px; height: 42px;
+            width: 42px;
+            height: 42px;
             cursor: pointer;
             flex-shrink: 0;
         }
 
         .g-timer-wrap svg {
-            position: absolute; inset: 0;
+            position: absolute;
+            inset: 0;
             transform: rotate(-90deg);
             pointer-events: none;
         }
 
-        .g-timer-track    { fill: none; stroke: #e8e2d8; stroke-width: 2.5; }
+        .g-timer-track {
+            fill: none;
+            stroke: #e8e2d8;
+            stroke-width: 2.5;
+        }
 
         .g-timer-progress {
             fill: none;
@@ -356,57 +390,90 @@
         }
 
         .g-timer-icon {
-            position: absolute; inset: 0;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 12px; color: var(--charcoal);
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--charcoal);
             pointer-events: none;
         }
 
         /* lightbox */
         .g-lightbox {
-            position: fixed; inset: 0;
-            background: rgba(10,10,10,.93);
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 10, .93);
             backdrop-filter: blur(8px);
             z-index: 9999;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
             transition: opacity .3s, visibility .3s;
         }
 
-        .g-lightbox.open { opacity: 1; visibility: visible; }
-
-        .g-lightbox img {
-            max-width: 92vw; max-height: 86vh;
-            border-radius: 16px;
-            object-fit: contain;
-            box-shadow: 0 40px 80px rgba(0,0,0,.6);
-            transform: scale(.96);
-            transition: transform .35s cubic-bezier(.25,.46,.45,.94);
+        .g-lightbox.open {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .g-lightbox.open img { transform: scale(1); }
+        .g-lightbox img {
+            max-width: 92vw;
+            max-height: 86vh;
+            border-radius: 16px;
+            object-fit: contain;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, .6);
+            transform: scale(.96);
+            transition: transform .35s cubic-bezier(.25, .46, .45, .94);
+        }
+
+        .g-lightbox.open img {
+            transform: scale(1);
+        }
 
         .g-lb-close {
-            position: absolute; top: 22px; right: 26px;
-            width: 44px; height: 44px; border-radius: 50%;
-            background: rgba(255,255,255,.12);
-            border: 1.5px solid rgba(255,255,255,.2);
-            color: #fff; font-size: 18px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
+            position: absolute;
+            top: 22px;
+            right: 26px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            border: 1.5px solid rgba(255, 255, 255, .2);
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: background .2s;
         }
 
-        .g-lb-close:hover { background: var(--gold); border-color: var(--gold); }
+        .g-lb-close:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
 
         .g-lb-caption {
-            position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+            position: absolute;
+            bottom: 26px;
+            left: 50%;
+            transform: translateX(-50%);
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem; color: rgba(255,255,255,.7);
-            white-space: nowrap; letter-spacing: .06em;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, .7);
+            white-space: nowrap;
+            letter-spacing: .06em;
         }
 
         @media (max-width: 600px) {
-            .g-card { width: 80vw; height: 240px; }
+            .g-card {
+                width: 80vw;
+                height: 240px;
+            }
         }
 
         /* =============================================
@@ -596,44 +663,235 @@
 
         /* ── LOGIN MODAL ── */
         #loginModal {
-            position: fixed; inset: 0; z-index: 9999;
-            display: flex; align-items: center; justify-content: center;
-            background: rgba(10,10,10,.65); backdrop-filter: blur(6px);
-            opacity: 0; visibility: hidden;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10, 10, 10, .65);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            visibility: hidden;
             transition: opacity .3s ease, visibility .3s ease;
         }
-        #loginModal.active { opacity: 1; visibility: visible; }
+
+        #loginModal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .modal-card {
-            background: #fff; border-radius: 24px; width: 100%; max-width: 420px;
-            margin: 20px; padding: 40px 36px 36px;
-            box-shadow: 0 32px 80px -12px rgba(0,0,0,.35);
+            background: #fff;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 420px;
+            margin: 20px;
+            padding: 40px 36px 36px;
+            box-shadow: 0 32px 80px -12px rgba(0, 0, 0, .35);
             transform: translateY(24px) scale(.97);
-            transition: transform .35s cubic-bezier(.22,.68,0,1.2);
+            transition: transform .35s cubic-bezier(.22, .68, 0, 1.2);
             position: relative;
         }
-        #loginModal.active .modal-card { transform: translateY(0) scale(1); }
-        .modal-logo { display:flex; align-items:center; gap:10px; margin-bottom:28px; }
-        .modal-logo i { font-size:28px; color:#c58b34; }
-        .modal-logo-text .brand { display:block; font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:700; color:#1E1E1E; line-height:1.1; }
-        .modal-logo-text .sub   { display:block; font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:#b06f2a; }
-        .modal-card h2 { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:#1E1E1E; margin-bottom:4px; }
-        .modal-card .modal-sub { font-size:13px; color:#6b7280; margin-bottom:28px; }
-        .modal-field { margin-bottom:18px; }
-        .modal-field label { display:block; font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#374151; margin-bottom:7px; }
-        .modal-field input { width:100%; padding:12px 14px; border:1.5px solid #e5e7eb; border-radius:12px; font-size:14px; color:#1E1E1E; background:#fafaf8; outline:none; transition:border-color .2s; }
-        .modal-field input:focus { border-color:#c58b34; background:#fff; }
-        .modal-error { display:none; background:#fef2f2; border:1px solid #fecaca; color:#b91c1c; font-size:12px; padding:10px 14px; border-radius:10px; margin-bottom:16px; }
-        .modal-error.show { display:block; }
-        .modal-btn { width:100%; padding:14px; background:linear-gradient(135deg,#c58b34 0%,#b06f2a 100%); color:#fff; font-size:14px; font-weight:600; letter-spacing:.08em; border:none; border-radius:12px; cursor:pointer; transition:opacity .2s,transform .15s; display:flex; align-items:center; justify-content:center; gap:8px; }
-        .modal-btn:hover { opacity:.92; transform:translateY(-1px); }
-        .modal-close-btn { position:absolute; top:14px; right:14px; width:32px; height:32px; border-radius:50%; background:#f3f4f6; border:none; cursor:pointer; color:#6b7280; font-size:14px; display:flex; align-items:center; justify-content:center; transition:background .15s,color .15s; }
-        .modal-close-btn:hover { background:#e5e7eb; color:#1E1E1E; }
-        .modal-footer { margin-top:20px; text-align:center; font-size:12px; color:#9ca3af; }
-        .nav-login-btn { background:linear-gradient(135deg,#c58b34 0%,#b06f2a 100%); color:#fff; padding:10px 22px; border-radius:9999px; font-size:14px; font-weight:600; letter-spacing:.06em; border:none; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 4px 20px rgba(197,139,52,.3); transition:opacity .2s,transform .15s; }
-        .nav-login-btn:hover { opacity:.9; transform:translateY(-1px); }
-        .nav-logged-in-btn { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:#b06f2a; background:#fbf9f2; border:1.5px solid #ddc27b; border-radius:9999px; padding:9px 18px; cursor:default; }
-        .nav-logout-btn { margin-left:4px; background:none; border:none; color:#9ca3af; cursor:pointer; font-size:11px; padding:4px 8px; border-radius:6px; transition:color .15s,background .15s; }
-        .nav-logout-btn:hover { background:#f3f4f6; color:#b91c1c; }
+
+        #loginModal.active .modal-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .modal-logo i {
+            font-size: 28px;
+            color: #c58b34;
+        }
+
+        .modal-logo-text .brand {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #1E1E1E;
+            line-height: 1.1;
+        }
+
+        .modal-logo-text .sub {
+            display: block;
+            font-size: 9px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #b06f2a;
+        }
+
+        .modal-card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #1E1E1E;
+            margin-bottom: 4px;
+        }
+
+        .modal-card .modal-sub {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 28px;
+        }
+
+        .modal-field {
+            margin-bottom: 18px;
+        }
+
+        .modal-field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #374151;
+            margin-bottom: 7px;
+        }
+
+        .modal-field input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 14px;
+            color: #1E1E1E;
+            background: #fafaf8;
+            outline: none;
+            transition: border-color .2s;
+        }
+
+        .modal-field input:focus {
+            border-color: #c58b34;
+            background: #fff;
+        }
+
+        .modal-error {
+            display: none;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+            font-size: 12px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+        }
+
+        .modal-error.show {
+            display: block;
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #c58b34 0%, #b06f2a 100%);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .08em;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: opacity .2s, transform .15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .modal-btn:hover {
+            opacity: .92;
+            transform: translateY(-1px);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            border: none;
+            cursor: pointer;
+            color: #6b7280;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .15s, color .15s;
+        }
+
+        .modal-close-btn:hover {
+            background: #e5e7eb;
+            color: #1E1E1E;
+        }
+
+        .modal-footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .nav-login-btn {
+            background: linear-gradient(135deg, #c58b34 0%, #b06f2a 100%);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .06em;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(197, 139, 52, .3);
+            transition: opacity .2s, transform .15s;
+        }
+
+        .nav-login-btn:hover {
+            opacity: .9;
+            transform: translateY(-1px);
+        }
+
+        .nav-logged-in-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #b06f2a;
+            background: #fbf9f2;
+            border: 1.5px solid #ddc27b;
+            border-radius: 9999px;
+            padding: 9px 18px;
+            cursor: default;
+        }
+
+        .nav-logout-btn {
+            margin-left: 4px;
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: color .15s, background .15s;
+        }
+
+        .nav-logout-btn:hover {
+            background: #f3f4f6;
+            color: #b91c1c;
+        }
     </style>
 </head>
 
@@ -868,15 +1126,24 @@
     <!-- LOGIN MODAL -->
     <div id="loginModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-card">
-            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close login"><i class="fa-solid fa-xmark"></i></button>
-            <div class="modal-logo"><i class="fa-solid fa-dove"></i><div class="modal-logo-text"><span class="brand">Teresa Development</span><span class="sub">Corporation</span></div></div>
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close login"><i
+                    class="fa-solid fa-xmark"></i></button>
+            <div class="modal-logo"><i class="fa-solid fa-dove"></i>
+                <div class="modal-logo-text"><span class="brand">Teresa Development</span><span
+                        class="sub">Corporation</span></div>
+            </div>
             <h2 id="modalTitle">Welcome Back</h2>
             <p class="modal-sub">Please log in to continue with your selected plan.</p>
-            <div id="modalError" class="modal-error"><i class="fa-solid fa-circle-exclamation mr-1"></i> <span id="modalErrorMsg"></span></div>
-            <div class="modal-field"><label for="loginEmail">Email Address</label><input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email"></div>
-            <div class="modal-field"><label for="loginPassword">Password</label><input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password"></div>
+            <div id="modalError" class="modal-error"><i class="fa-solid fa-circle-exclamation mr-1"></i> <span
+                    id="modalErrorMsg"></span></div>
+            <div class="modal-field"><label for="loginEmail">Email Address</label><input type="email" id="loginEmail"
+                    placeholder="you@example.com" autocomplete="email"></div>
+            <div class="modal-field"><label for="loginPassword">Password</label><input type="password"
+                    id="loginPassword" placeholder="••••••••" autocomplete="current-password"></div>
             <button class="modal-btn" id="loginSubmitBtn"><i class="fa-solid fa-right-to-bracket"></i> LOG IN</button>
-            <p class="modal-footer">By logging in you agree to our <a href="#" style="color:#b06f2a;text-decoration:underline;">Terms of Service</a> and <a href="#" style="color:#b06f2a;text-decoration:underline;">Privacy Policy</a>.</p>
+            <p class="modal-footer">By logging in you agree to our <a href="#"
+                    style="color:#b06f2a;text-decoration:underline;">Terms of Service</a> and <a href="#"
+                    style="color:#b06f2a;text-decoration:underline;">Privacy Policy</a>.</p>
         </div>
     </div>
 
@@ -975,8 +1242,8 @@
                     <button class="g-arr" id="gNextBtn" aria-label="Next">&#8594;</button>
                     <div class="g-timer-wrap" id="gTimerWrap" title="Pause / Play">
                         <svg viewBox="0 0 38 38" width="42" height="42">
-                            <circle class="g-timer-track"    cx="19" cy="19" r="17.5"/>
-                            <circle class="g-timer-progress" cx="19" cy="19" r="17.5" id="gTimerRing"/>
+                            <circle class="g-timer-track" cx="19" cy="19" r="17.5" />
+                            <circle class="g-timer-progress" cx="19" cy="19" r="17.5" id="gTimerRing" />
                         </svg>
                         <div class="g-timer-icon" id="gTimerIcon">&#9654;</div>
                     </div>
@@ -2086,210 +2353,210 @@
     </div>
 
     <script>
-    /* ── GALLERY CAROUSEL ── */
-    (function () {
-        const G_SLIDES = [
-            {
-                src: 'https://scontent.fdvo2-2.fna.fbcdn.net/v/t39.30808-6/573339161_809886624981491_7539312062762622891_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=13d280&_nc_ohc=eIhP6ze_ZLAQ7kNvwHC6ykK&_nc_oc=AdnS40qhX7BXSYYXNxhZWscx6yaTWIaqcsHKE_VcNxK9U5heWR7dcuY1yqcOE7TPtYCT1AzO_ymz2CUDWhfHummO&_nc_zt=23&_nc_ht=scontent.fdvo2-2.fna&_nc_gid=9AjE2kEmDAQR5C2s8yKPKQ&_nc_ss=8&oh=00_Afz4eY6D0XdDkIPzKtimDgGRCMxHemjDJlkUdWp1sR2p6w&oe=69C01AD2',
-                title: 'Main Chapel',
-                sub: 'Grand Entrance'
-            },
-            {
-                src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
-                title: 'Architectural Beauty',
-                sub: 'Exterior View'
-            },
-            {
-                src: 'https://images.unsplash.com/photo-1585543805890-6051f7829f98?q=80&w=1200&auto=format&fit=crop',
-                title: 'Serene Gardens',
-                sub: 'Reflection Park'
-            },
-            {
-                src: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200&auto=format&fit=crop',
-                title: 'Peaceful Landscape',
-                sub: 'Sanctuary Grounds'
-            },
-            {
-                src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop',
-                title: 'Memorial Chapel',
-                sub: 'Inner Sanctuary'
-            },
-        ];
+        /* ── GALLERY CAROUSEL ── */
+        (function () {
+            const G_SLIDES = [
+                {
+                    src: './Assets/Culombarium.jpg',
+                    title: 'Main Chapel',
+                    sub: 'Grand Entrance'
+                },
+                {
+                    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
+                    title: 'Architectural Beauty',
+                    sub: 'Exterior View'
+                },
+                {
+                    src: 'https://images.unsplash.com/photo-1585543805890-6051f7829f98?q=80&w=1200&auto=format&fit=crop',
+                    title: 'Serene Gardens',
+                    sub: 'Reflection Park'
+                },
+                {
+                    src: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200&auto=format&fit=crop',
+                    title: 'Peaceful Landscape',
+                    sub: 'Sanctuary Grounds'
+                },
+                {
+                    src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop',
+                    title: 'Memorial Chapel',
+                    sub: 'Inner Sanctuary'
+                },
+            ];
 
-        const G_INTERVAL = 3500;
-        const G_CIRCUMF  = 110;
+            const G_INTERVAL = 3500;
+            const G_CIRCUMF = 110;
 
-        let gCurrent   = 0;
-        let gAutoTimer = null;
-        let gPaused    = false;
+            let gCurrent = 0;
+            let gAutoTimer = null;
+            let gPaused = false;
 
-        const gTrack     = document.getElementById('gTrack');
-        const gDotsEl    = document.getElementById('gDots');
-        const gTimerRing = document.getElementById('gTimerRing');
-        const gTimerIcon = document.getElementById('gTimerIcon');
-        const gTimerWrap = document.getElementById('gTimerWrap');
-        const gViewport  = document.getElementById('gViewport');
+            const gTrack = document.getElementById('gTrack');
+            const gDotsEl = document.getElementById('gDots');
+            const gTimerRing = document.getElementById('gTimerRing');
+            const gTimerIcon = document.getElementById('gTimerIcon');
+            const gTimerWrap = document.getElementById('gTimerWrap');
+            const gViewport = document.getElementById('gViewport');
 
-        /* build cards + dots */
-        G_SLIDES.forEach(function (s, i) {
-            var card = document.createElement('div');
-            card.className = 'g-card' + (i === 0 ? ' active' : '');
-            card.innerHTML =
-                '<img src="' + s.src + '" alt="' + s.title + '" loading="' + (i < 2 ? 'eager' : 'lazy') + '">' +
-                '<div class="g-card-caption"><h3>' + s.title + '</h3><p>' + s.sub + '</p></div>';
-            card.addEventListener('click', (function (idx) {
-                return function () { idx === gCurrent ? gOpenLightbox(idx) : gGoTo(idx); };
-            })(i));
-            gTrack.appendChild(card);
+            /* build cards + dots */
+            G_SLIDES.forEach(function (s, i) {
+                var card = document.createElement('div');
+                card.className = 'g-card' + (i === 0 ? ' active' : '');
+                card.innerHTML =
+                    '<img src="' + s.src + '" alt="' + s.title + '" loading="' + (i < 2 ? 'eager' : 'lazy') + '">' +
+                    '<div class="g-card-caption"><h3>' + s.title + '</h3><p>' + s.sub + '</p></div>';
+                card.addEventListener('click', (function (idx) {
+                    return function () { idx === gCurrent ? gOpenLightbox(idx) : gGoTo(idx); };
+                })(i));
+                gTrack.appendChild(card);
 
-            var dot = document.createElement('button');
-            dot.className = 'g-dot' + (i === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-            dot.addEventListener('click', (function (idx) {
-                return function () { gGoTo(idx); };
-            })(i));
-            gDotsEl.appendChild(dot);
-        });
+                var dot = document.createElement('button');
+                dot.className = 'g-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                dot.addEventListener('click', (function (idx) {
+                    return function () { gGoTo(idx); };
+                })(i));
+                gDotsEl.appendChild(dot);
+            });
 
-        /* reflow: center active card */
-        function gReflow() {
-            if (!gTrack.children.length) return;
-            var vw = gViewport.offsetWidth;
-            var cw = gTrack.children[0].getBoundingClientRect().width;
-            var gap = 20;
-            var offset = gCurrent * (cw + gap) - (vw / 2 - cw / 2);
-            gTrack.style.transform = 'translateX(' + (-offset) + 'px)';
-        }
+            /* reflow: center active card */
+            function gReflow() {
+                if (!gTrack.children.length) return;
+                var vw = gViewport.offsetWidth;
+                var cw = gTrack.children[0].getBoundingClientRect().width;
+                var gap = 20;
+                var offset = gCurrent * (cw + gap) - (vw / 2 - cw / 2);
+                gTrack.style.transform = 'translateX(' + (-offset) + 'px)';
+            }
 
-        /* go to slide */
-        function gGoTo(idx) {
-            var cards = gTrack.querySelectorAll('.g-card');
-            var dots  = gDotsEl.querySelectorAll('.g-dot');
-            cards[gCurrent].classList.remove('active');
-            dots[gCurrent].classList.remove('active');
-            gCurrent = ((idx % G_SLIDES.length) + G_SLIDES.length) % G_SLIDES.length;
-            cards[gCurrent].classList.add('active');
-            dots[gCurrent].classList.add('active');
-            gReflow();
-            if (!gPaused) gStartTimer();
-        }
+            /* go to slide */
+            function gGoTo(idx) {
+                var cards = gTrack.querySelectorAll('.g-card');
+                var dots = gDotsEl.querySelectorAll('.g-dot');
+                cards[gCurrent].classList.remove('active');
+                dots[gCurrent].classList.remove('active');
+                gCurrent = ((idx % G_SLIDES.length) + G_SLIDES.length) % G_SLIDES.length;
+                cards[gCurrent].classList.add('active');
+                dots[gCurrent].classList.add('active');
+                gReflow();
+                if (!gPaused) gStartTimer();
+            }
 
-        /* timer ring */
-        function gStartTimer() {
-            clearTimeout(gAutoTimer);
-            gTimerRing.style.transition = 'none';
-            gTimerRing.style.strokeDashoffset = G_CIRCUMF;
-            void gTimerRing.offsetWidth;
-            gTimerRing.style.transition = 'stroke-dashoffset ' + G_INTERVAL + 'ms linear';
-            gTimerRing.style.strokeDashoffset = 0;
-            gAutoTimer = setTimeout(function () { gGoTo(gCurrent + 1); }, G_INTERVAL);
-        }
+            /* timer ring */
+            function gStartTimer() {
+                clearTimeout(gAutoTimer);
+                gTimerRing.style.transition = 'none';
+                gTimerRing.style.strokeDashoffset = G_CIRCUMF;
+                void gTimerRing.offsetWidth;
+                gTimerRing.style.transition = 'stroke-dashoffset ' + G_INTERVAL + 'ms linear';
+                gTimerRing.style.strokeDashoffset = 0;
+                gAutoTimer = setTimeout(function () { gGoTo(gCurrent + 1); }, G_INTERVAL);
+            }
 
-        function gStopTimer() {
-            clearTimeout(gAutoTimer);
-            var val = getComputedStyle(gTimerRing).strokeDashoffset;
-            gTimerRing.style.transition = 'none';
-            gTimerRing.style.strokeDashoffset = val;
-        }
+            function gStopTimer() {
+                clearTimeout(gAutoTimer);
+                var val = getComputedStyle(gTimerRing).strokeDashoffset;
+                gTimerRing.style.transition = 'none';
+                gTimerRing.style.strokeDashoffset = val;
+            }
 
-        /* pause / play */
-        gTimerWrap.addEventListener('click', function () {
-            gPaused = !gPaused;
-            gTimerIcon.innerHTML = gPaused ? '&#9646;&#9646;' : '&#9654;';
-            gPaused ? gStopTimer() : gStartTimer();
-        });
+            /* pause / play */
+            gTimerWrap.addEventListener('click', function () {
+                gPaused = !gPaused;
+                gTimerIcon.innerHTML = gPaused ? '&#9646;&#9646;' : '&#9654;';
+                gPaused ? gStopTimer() : gStartTimer();
+            });
 
-        /* arrows */
-        document.getElementById('gPrevBtn').addEventListener('click', function () { gGoTo(gCurrent - 1); });
-        document.getElementById('gNextBtn').addEventListener('click', function () { gGoTo(gCurrent + 1); });
+            /* arrows */
+            document.getElementById('gPrevBtn').addEventListener('click', function () { gGoTo(gCurrent - 1); });
+            document.getElementById('gNextBtn').addEventListener('click', function () { gGoTo(gCurrent + 1); });
 
-        /* keyboard — only when lightbox is closed */
-        document.addEventListener('keydown', function (e) {
-            if (document.getElementById('gLightbox').classList.contains('open')) return;
-            if (e.key === 'ArrowRight') gGoTo(gCurrent + 1);
-            if (e.key === 'ArrowLeft')  gGoTo(gCurrent - 1);
-            if (e.key === 'Escape')     gCloseLightbox();
-        });
+            /* keyboard — only when lightbox is closed */
+            document.addEventListener('keydown', function (e) {
+                if (document.getElementById('gLightbox').classList.contains('open')) return;
+                if (e.key === 'ArrowRight') gGoTo(gCurrent + 1);
+                if (e.key === 'ArrowLeft') gGoTo(gCurrent - 1);
+                if (e.key === 'Escape') gCloseLightbox();
+            });
 
-        /* swipe */
-        var gTouchX = 0;
-        gViewport.addEventListener('touchstart', function (e) { gTouchX = e.touches[0].clientX; }, { passive: true });
-        gViewport.addEventListener('touchend', function (e) {
-            var dx = e.changedTouches[0].clientX - gTouchX;
-            if (Math.abs(dx) > 40) gGoTo(gCurrent + (dx < 0 ? 1 : -1));
-        });
+            /* swipe */
+            var gTouchX = 0;
+            gViewport.addEventListener('touchstart', function (e) { gTouchX = e.touches[0].clientX; }, { passive: true });
+            gViewport.addEventListener('touchend', function (e) {
+                var dx = e.changedTouches[0].clientX - gTouchX;
+                if (Math.abs(dx) > 40) gGoTo(gCurrent + (dx < 0 ? 1 : -1));
+            });
 
-        /* lightbox */
-        function gOpenLightbox(i) {
-            document.getElementById('gLbImg').src = G_SLIDES[i].src;
-            document.getElementById('gLbCaption').textContent = G_SLIDES[i].title;
-            document.getElementById('gLightbox').classList.add('open');
-            gStopTimer();
-        }
+            /* lightbox */
+            function gOpenLightbox(i) {
+                document.getElementById('gLbImg').src = G_SLIDES[i].src;
+                document.getElementById('gLbCaption').textContent = G_SLIDES[i].title;
+                document.getElementById('gLightbox').classList.add('open');
+                gStopTimer();
+            }
 
-        function gCloseLightbox() {
-            document.getElementById('gLightbox').classList.remove('open');
-            if (!gPaused) gStartTimer();
-        }
+            function gCloseLightbox() {
+                document.getElementById('gLightbox').classList.remove('open');
+                if (!gPaused) gStartTimer();
+            }
 
-        document.getElementById('gLbClose').addEventListener('click', gCloseLightbox);
-        document.getElementById('gLightbox').addEventListener('click', function (e) {
-            if (e.target.id === 'gLightbox') gCloseLightbox();
-        });
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') gCloseLightbox();
-        });
+            document.getElementById('gLbClose').addEventListener('click', gCloseLightbox);
+            document.getElementById('gLightbox').addEventListener('click', function (e) {
+                if (e.target.id === 'gLightbox') gCloseLightbox();
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') gCloseLightbox();
+            });
 
-        /* init */
-        window.addEventListener('resize', gReflow);
-        requestAnimationFrame(function () {
-            requestAnimationFrame(function () { gReflow(); gStartTimer(); });
-        });
-    })();
+            /* init */
+            window.addEventListener('resize', gReflow);
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () { gReflow(); gStartTimer(); });
+            });
+        })();
 
         // ── Auth helpers ──────────────────────────────────────────────────────
         const AUTH_KEY = 'tdc_user';
-        function getUser() { try { return JSON.parse(sessionStorage.getItem(AUTH_KEY))||null; } catch{ return null; } }
-        function setUser(u) { sessionStorage.setItem(AUTH_KEY,JSON.stringify(u)); }
+        function getUser() { try { return JSON.parse(sessionStorage.getItem(AUTH_KEY)) || null; } catch { return null; } }
+        function setUser(u) { sessionStorage.setItem(AUTH_KEY, JSON.stringify(u)); }
         function clearUser() { sessionStorage.removeItem(AUTH_KEY); }
-        function escHtml(s) { return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+        function escHtml(s) { return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
 
         function renderNavAuth() {
-            const area=document.getElementById('navAuthArea');
-            const user=getUser();
-            if(user){
-                area.innerHTML=`<div style="display:flex;align-items:center;gap:4px;"><div class="nav-logged-in-btn"><i class="fa-solid fa-circle-user"></i><span>${escHtml(user.email)}</span></div><button class="nav-logout-btn" id="navLogoutBtn" title="Log out"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button></div>`;
-                document.getElementById('navLogoutBtn').addEventListener('click',()=>{ clearUser(); renderNavAuth(); });
+            const area = document.getElementById('navAuthArea');
+            const user = getUser();
+            if (user) {
+                area.innerHTML = `<div style="display:flex;align-items:center;gap:4px;"><div class="nav-logged-in-btn"><i class="fa-solid fa-circle-user"></i><span>${escHtml(user.email)}</span></div><button class="nav-logout-btn" id="navLogoutBtn" title="Log out"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button></div>`;
+                document.getElementById('navLogoutBtn').addEventListener('click', () => { clearUser(); renderNavAuth(); });
             } else {
-                area.innerHTML=`<button class="nav-login-btn" id="navLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> LOG IN</button>`;
-                document.getElementById('navLoginBtn').addEventListener('click',()=>openModal(null));
+                area.innerHTML = `<button class="nav-login-btn" id="navLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> LOG IN</button>`;
+                document.getElementById('navLoginBtn').addEventListener('click', () => openModal(null));
             }
         }
 
-        let pendingHref=null;
-        function openModal(href){ pendingHref=href; document.getElementById('modalError').classList.remove('show'); document.getElementById('loginEmail').value=''; document.getElementById('loginPassword').value=''; document.getElementById('loginModal').classList.add('active'); setTimeout(()=>document.getElementById('loginEmail').focus(),50); }
-        function closeModal(){ document.getElementById('loginModal').classList.remove('active'); pendingHref=null; }
-        document.getElementById('modalCloseBtn').addEventListener('click',closeModal);
-        document.getElementById('loginModal').addEventListener('click',function(e){ if(e.target===this)closeModal(); });
-        document.addEventListener('keydown',e=>{ if(e.key==='Escape')closeModal(); });
+        let pendingHref = null;
+        function openModal(href) { pendingHref = href; document.getElementById('modalError').classList.remove('show'); document.getElementById('loginEmail').value = ''; document.getElementById('loginPassword').value = ''; document.getElementById('loginModal').classList.add('active'); setTimeout(() => document.getElementById('loginEmail').focus(), 50); }
+        function closeModal() { document.getElementById('loginModal').classList.remove('active'); pendingHref = null; }
+        document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+        document.getElementById('loginModal').addEventListener('click', function (e) { if (e.target === this) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-        function showError(msg){ document.getElementById('modalErrorMsg').textContent=msg; document.getElementById('modalError').classList.add('show'); }
-        document.getElementById('loginSubmitBtn').addEventListener('click',handleLogin);
-        document.getElementById('loginPassword').addEventListener('keydown',e=>{ if(e.key==='Enter')handleLogin(); });
-        function handleLogin(){
-            const email=document.getElementById('loginEmail').value.trim();
-            const password=document.getElementById('loginPassword').value;
-            if(!email){showError('Please enter your email address.');return;}
-            if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){showError('Please enter a valid email address.');return;}
-            if(!password){showError('Please enter your password.');return;}
-            if(password.length<6){showError('Password must be at least 6 characters.');return;}
-            const btn=document.getElementById('loginSubmitBtn');
-            btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Logging in…';
-            setTimeout(()=>{ setUser({email}); renderNavAuth(); closeModal(); btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-right-to-bracket"></i> LOG IN'; if(pendingHref) window.location.href=pendingHref; },900);
+        function showError(msg) { document.getElementById('modalErrorMsg').textContent = msg; document.getElementById('modalError').classList.add('show'); }
+        document.getElementById('loginSubmitBtn').addEventListener('click', handleLogin);
+        document.getElementById('loginPassword').addEventListener('keydown', e => { if (e.key === 'Enter') handleLogin(); });
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            if (!email) { showError('Please enter your email address.'); return; }
+            if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { showError('Please enter a valid email address.'); return; }
+            if (!password) { showError('Please enter your password.'); return; }
+            if (password.length < 6) { showError('Password must be at least 6 characters.'); return; }
+            const btn = document.getElementById('loginSubmitBtn');
+            btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logging in…';
+            setTimeout(() => { setUser({ email }); renderNavAuth(); closeModal(); btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> LOG IN'; if (pendingHref) window.location.href = pendingHref; }, 900);
         }
 
-        document.querySelectorAll('a.niche-card, a.plan-card, a.lot-card').forEach(card=>{
-            card.addEventListener('click',function(e){ if(!getUser()){ e.preventDefault(); openModal(this.href); } });
+        document.querySelectorAll('a.niche-card, a.plan-card, a.lot-card').forEach(card => {
+            card.addEventListener('click', function (e) { if (!getUser()) { e.preventDefault(); openModal(this.href); } });
         });
         renderNavAuth();
     </script>
